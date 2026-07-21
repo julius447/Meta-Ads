@@ -2,8 +2,10 @@ import type { ComponentType } from 'react';
 import type { FormatId } from '@/lib/formats';
 import { EC01Morkret } from './elcentral/EC01-Morkret';
 import { EC03OftastInte } from './elcentral/EC03-OftastInte';
-import { EC10Nyhet } from './elcentral/EC10-Nyhet';
-import { ECProblemLosning } from './elcentral/EC-ProblemLosning';
+import { EC05ANyhet, EC05BNyhet } from './elcentral/EC05-Nyhet';
+import { ECFragor } from './elcentral/EC-Fragor';
+import { EC08Sms } from './elcentral/EC08-Sms';
+import { EC13BakomLuckan } from './elcentral/EC13-BakomLuckan';
 
 export type AdComponent = ComponentType<{ format: FormatId }>;
 
@@ -11,6 +13,9 @@ export type AdComponent = ComponentType<{ format: FormatId }>;
 export const AD_COMPONENTS: Record<string, AdComponent> = {
   'EC-01': EC01Morkret,
   'EC-03': EC03OftastInte,
-  'EC-NYHET': EC10Nyhet,
-  'EC-PROBLEM': ECProblemLosning,
+  'EC-05A': EC05ANyhet,
+  'EC-05B': EC05BNyhet,
+  'EC-06': ECFragor,
+  'EC-08': EC08Sms,
+  'EC-13': EC13BakomLuckan,
 };

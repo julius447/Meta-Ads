@@ -14,22 +14,40 @@ export interface AdEntry {
  * React-annonser (nya spåret). Dessa ERSÄTTER PNG-versionen med samma id —
  * en komponent renderar alla tre format.
  */
+const ALL3: Partial<Record<FormatId, boolean>> = { feed: true, square: true, story: true };
+const comp = (id: string, campaign: string, formats: Partial<Record<FormatId, boolean>> = ALL3): AdEntry => ({
+  id, variant: '', campaign, kind: 'component',
+  formats: Object.fromEntries(Object.keys(formats).map(k => [k, id])),
+});
+
 const COMPONENT_ADS: AdEntry[] = [
-  { id: 'EC-01', variant: '', campaign: 'Elcentral', kind: 'component',
-    formats: { feed: 'EC-01', square: 'EC-01', story: 'EC-01' } },
-  { id: 'EC-03', variant: '', campaign: 'Elcentral', kind: 'component',
-    formats: { feed: 'EC-03', square: 'EC-03', story: 'EC-03' } },
-  { id: 'EC-NYHET', variant: '', campaign: 'Elcentral', kind: 'component',
-    formats: { feed: 'EC-NYHET', square: 'EC-NYHET', story: 'EC-NYHET' } },
-  { id: 'EC-PROBLEM', variant: '', campaign: 'Elcentral', kind: 'component',
-    formats: { feed: 'EC-PROBLEM', square: 'EC-PROBLEM', story: 'EC-PROBLEM' } },
+  comp('EC-01', 'Elcentral'),
+  // Ägaren strök kvadrat för EC-03 — bara feed + story körs.
+  comp('EC-03', 'Elcentral', { feed: true, story: true }),
+  comp('EC-05A', 'Elcentral'),
+  comp('EC-05B', 'Elcentral'),
+  comp('EC-06', 'Elcentral'),
+  comp('EC-08', 'Elcentral'),
+  comp('EC-13', 'Elcentral'),
 ];
+
+/**
+ * Kapade av ägaren 2026-07-21. EC-07 ligger här av annat skäl: jag har ingen
+ * duglig bild till den och vägrar skeppa AI-bilderna han redan underkänt.
+ */
+const RETIRED = new Set([
+  'Elcentral/EC-06A', 'Elcentral/EC-06B', 'Elcentral/EC-07', 'Elcentral/EC-12',
+  'Elcentral/EC-NYHET', 'Elcentral/EC-PROBLEM',
+]);
 
 const overridden = new Set(COMPONENT_ADS.map(a => `${a.campaign}/${a.id}`));
 
 export const ADS: AdEntry[] = [
   ...COMPONENT_ADS,
-  ...GENERATED_ADS.filter(a => !overridden.has(`${a.campaign}/${a.id}`)),
+  ...GENERATED_ADS.filter(a => {
+    const k = `${a.campaign}/${a.id}`;
+    return !overridden.has(k) && !RETIRED.has(k);
+  }),
 ];
 
 export const CAMPAIGNS = [...new Set(ADS.map(a => a.campaign))].sort();

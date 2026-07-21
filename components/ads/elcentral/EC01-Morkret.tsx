@@ -1,5 +1,5 @@
 import { AdCanvas } from '../AdCanvas';
-import { Photo, Grain, BottomScrim, Underlined, C } from '../primitives';
+import { Photo, Grain, BottomScrim, Underlined } from '../primitives';
 import { FORMATS, type FormatId } from '@/lib/formats';
 
 /**
@@ -16,7 +16,8 @@ import { FORMATS, type FormatId } from '@/lib/formats';
  * 2. Displaytexten är uppskalad ~35 % och satt i 800 med tight tracking —
  *    v1 var för liten för att bära i flödet.
  * 3. "ELCENTRAL-KOLLEN · 2 MIN · INGET MEJL" struken (ägardirektiv).
- *    Ersatt av EN handlingsrad som säger vad man faktiskt får.
+ * 4. Teal-raden + AMPY-wordmark struken (ägardirektiv 2026-07-20) — annonsen
+ *    bär rubrik + handlingsrad, inget mer. GODKÄND.
  */
 export function EC01Morkret({ format }: { format: FormatId }) {
   const f = FORMATS[format];
@@ -78,28 +79,6 @@ export function EC01Morkret({ format }: { format: FormatId }) {
           Gör vårt test och se hur din <Underlined>elcentral</Underlined> presterar.
         </p>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-          <span
-            style={{
-              width: 54,
-              height: 5,
-              borderRadius: 3,
-              background: C.tealBright,
-              display: 'inline-block',
-            }}
-          />
-          <span
-            style={{
-              fontSize: 28,
-              fontWeight: 600,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.72)',
-            }}
-          >
-            Ampy
-          </span>
-        </div>
       </div>
     </AdCanvas>
   );

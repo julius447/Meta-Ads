@@ -18,8 +18,10 @@ import { FORMATS, type FormatId } from '@/lib/formats';
  */
 export function EC03OftastInte({ format }: { format: FormatId }) {
   const f = FORMATS[format];
-  // Fotot får bära mer yta i story, mindre i kvadrat.
-  const blockRatio = format === 'story' ? 0.34 : format === 'square' ? 0.42 : 0.37;
+  // Story-buggen i v2: blocket var 0.34 (653px) men bottom-safe är 384px, så
+  // texten sköts UPP ur blocket och la sig på fotot. Blocket måste rymma
+  // safe-zonen PLUS innehållet — därav 0.47 (≈900px) i story.
+  const blockRatio = format === 'story' ? 0.47 : format === 'square' ? 0.42 : 0.37;
   const blockH = Math.round(f.h * blockRatio);
 
   return (
