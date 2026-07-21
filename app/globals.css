@@ -1,9 +1,34 @@
 @import "tailwindcss";
 
 /*
-  Verktyget är medvetet ENBART mörkt. Annonser granskas mot en neutral mörk
-  yta så att ljusa kreativ inte smälter ihop med sidbakgrunden — samma skäl
-  som ett fotolabb har mörka väggar. Därför ingen prefers-color-scheme-växling.
+  TYPSNITTSBESLUT (2026-07-20)
+  ----------------------------
+  Switzer (Indian Type Foundry / Fontshare) — schweizisk neo-grotesk.
+
+  Varför inte Outfit/Inter: research pekar ut "geometrisk vänlighet" och Inter i
+  display som 2026 års tydligaste billig-/AI-signal. Switzer ligger i den familj
+  (Söhne / Suisse Int'l / GT America) som läser som premium.
+
+  Varför inte Söhne rakt av: bättre men betald licens. Switzer ger merparten av
+  effekten, är fri även kommersiellt (Fontshare FF EULA: print, web, broadcast,
+  världsomfattande) och är variabel 100–900 — vilket ger den viktkontrast på
+  ≥300 enheter som displayhierarkin kräver, ur EN familj.
+
+  Självhostad (43 kB woff2), inte CDN: Playwright/CI måste ha typsnittet lokalt,
+  annars renderar exportbatchen i fallback.
+*/
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block; /* ALDRIG swap — fallback får inte hinna in i en render */
+}
+
+/*
+  Verktyget är medvetet ENBART mörkt. Annonser granskas mot en neutral mörk yta
+  så att ljusa kreativ inte smälter ihop med sidbakgrunden — samma skäl som ett
+  fotolabb har mörka väggar.
 */
 :root {
   --background: #0a0a0b;
@@ -13,7 +38,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Switzer', system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -21,7 +46,20 @@ html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-  font-synthesis: none;
-  text-rendering: geometricPrecision;
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-synthesis: none; /* ingen syntetisk fetstil — fel bredder */
+  text-rendering: geometricPrecision; /* deterministisk kerning över maskiner */
+}
+
+/* Display-lagret i annonser: tight tracking, radblock som läses som ETT objekt. */
+.ad-display {
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 0.92;
+  font-feature-settings: 'ss01' 1;
+}
+
+/* Siffror i annonser ska aldrig hoppa i bredd. */
+.ad-num {
+  font-variant-numeric: tabular-nums;
 }

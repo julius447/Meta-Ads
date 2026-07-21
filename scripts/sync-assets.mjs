@@ -19,6 +19,17 @@ const PUB = join(ROOT, 'public', 'assets');
 
 const CAMPAIGNS = ['Elcentral', 'Service', 'Elkollen', 'Energi', 'Belysning', 'Branding'];
 
+/**
+ * Färdiga annonser ligger på två ställen (ägaren flyttade delar under
+ * manuellt arbete). Första träffen per kampanj vinner.
+ */
+const NYA = join(homedir(), 'Desktop', 'Nya annonser');
+const FINISHED_DIRS = (c) => [
+  join(KLARA, `Färdiga annonser ${c}`),
+  join(NYA, c),
+  join(NYA, c, `Färdiga annonser ${c}`),
+];
+
 /** Filnamn → format. Ex: EC-01_final_4x5.png */
 function detectFormat(file) {
   if (/_9x16|1080x1920|9-16/.test(file)) return 'story';
@@ -40,10 +51,12 @@ const ads = new Map(); // key = `${campaign}/${id}${variant}`
 
 // ---- 1. Färdiga annonser ----
 for (const c of CAMPAIGNS) {
-  const dir = join(KLARA, `Färdiga annonser ${c}`);
-  if (!existsSync(dir)) { console.warn(`⚠  saknas: ${dir}`); continue; }
+  const dir = FINISHED_DIRS(c).find(
+    (d) => existsSync(d) && readdirSync(d).some((f) => f.toLowerCase().endsWith('.png'))
+  );
+  if (!dir) { console.warn(`⚠  inga färdiga annonser hittade för ${c}`); continue; }
   const files = readdirSync(dir).filter(f => f.toLowerCase().endsWith('.png'));
-  if (!files.length) console.warn(`⚠  TOM: Färdiga annonser ${c}`);
+  console.log(`  ${c} ← ${dir.replace(homedir(), '~')} (${files.length})`);
   ensure(join(PUB, 'ads', c));
   for (const f of files) {
     copyFileSync(join(dir, f), join(PUB, 'ads', c, f));

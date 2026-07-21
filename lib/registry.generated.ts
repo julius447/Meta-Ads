@@ -61,6 +61,96 @@ export const GENERATED_ADS: AdEntry[] = [
     }
   },
   {
+    "id": "EC-01",
+    "variant": "",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-01_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-03",
+    "variant": "",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-03_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-05",
+    "variant": "A",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-05A_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-05",
+    "variant": "B",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-05B_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-06",
+    "variant": "A",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-06A_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-06",
+    "variant": "B",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-06B_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-07",
+    "variant": "",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-07_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-08",
+    "variant": "",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-08_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-12",
+    "variant": "",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-12_final_4x5.png"
+    }
+  },
+  {
+    "id": "EC-13",
+    "variant": "",
+    "campaign": "Elcentral",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Elcentral/EC-13_final_4x5.png"
+    }
+  },
+  {
     "id": "EK-01",
     "variant": "A",
     "campaign": "Elkollen",
@@ -357,6 +447,105 @@ export const GENERATED_ADS: AdEntry[] = [
     "kind": "image",
     "formats": {
       "feed": "/assets/templates/Group 9.png"
+    }
+  },
+  {
+    "id": "SV-02",
+    "variant": "A",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-02A_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-02",
+    "variant": "B",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-02B_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-04",
+    "variant": "A",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-04A_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-04",
+    "variant": "B",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-04B_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-07",
+    "variant": "A",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-07A_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-07",
+    "variant": "B",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-07B_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-09",
+    "variant": "",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-09_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-11",
+    "variant": "A",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-11A_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-11",
+    "variant": "B",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-11B_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-12",
+    "variant": "A",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-12A_final_4x5.png"
+    }
+  },
+  {
+    "id": "SV-12",
+    "variant": "B",
+    "campaign": "Service",
+    "kind": "image",
+    "formats": {
+      "feed": "/assets/ads/Service/SV-12B_final_4x5.png"
     }
   }
 ];
