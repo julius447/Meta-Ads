@@ -26,7 +26,7 @@ const COMPONENT_ADS: AdEntry[] = [
   comp('EC-03', 'Elcentral', { feed: true, story: true }),
   comp('EC-05A', 'Elcentral'),
   comp('EC-05B', 'Elcentral'),
-  comp('EC-06', 'Elcentral'),
+  comp('EC-09', 'Elcentral'),
   comp('EC-08', 'Elcentral'),
   comp('EC-13', 'Elcentral'),
 ];
