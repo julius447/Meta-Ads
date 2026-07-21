@@ -63,7 +63,7 @@ export const FORMATS: Record<FormatId, FormatSpec> = {
     // Unified safe zone (mars 2026): topp 14%, botten 20%, sidor 6%
     safe: { top: 269, bottom: 384, side: 65 },
     scale: 1.18,
-    stack: 'spread',
+    stack: 'bottom',
   },
 };
 

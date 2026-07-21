@@ -3,6 +3,7 @@
 import { FORMATS, type FormatId, formatCssVars } from '@/lib/formats';
 import { asset } from '@/lib/asset';
 import type { AdEntry } from '@/lib/registry';
+import { AD_COMPONENTS } from '@/components/ads';
 
 /**
  * Renderar en annons i EXAKT designstorlek och skalar ned visuellt med
@@ -21,14 +22,16 @@ export function AdFrame({
   const f = FORMATS[format];
   const z = targetWidth / f.w;
   const src = ad.formats[format];
+  const Comp = ad.kind === 'component' ? AD_COMPONENTS[ad.id] : undefined;
+  const hasContent = ad.kind === 'component' ? Boolean(Comp) : Boolean(src);
 
   return (
     <figure className="flex flex-col gap-2">
       <div
-        className="relative overflow-hidden rounded-lg ring-1 ring-white/10 bg-neutral-900"
+        className="relative overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-white/10"
         style={{ width: f.w * z, height: f.h * z }}
       >
-        {src ? (
+        {hasContent ? (
           <div
             style={{
               width: f.w,
@@ -38,14 +41,18 @@ export function AdFrame({
               ...formatCssVars(f),
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={asset(src)}
-              alt={`${ad.id} ${f.label}`}
-              width={f.w}
-              height={f.h}
-              className="block h-full w-full object-cover"
-            />
+            {Comp ? (
+              <Comp format={format} />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={asset(src!)}
+                alt={`${ad.id} ${f.label}`}
+                width={f.w}
+                height={f.h}
+                className="block h-full w-full object-cover"
+              />
+            )}
           </div>
         ) : (
           <div className="flex h-full w-full items-center justify-center px-3 text-center">

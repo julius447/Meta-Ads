@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync": "node scripts/sync-assets.mjs"
+    "sync": "node scripts/sync-assets.mjs",
+    "render": "node scripts/render-ads.mjs"
   },
   "dependencies": {
     "next": "16.2.10",

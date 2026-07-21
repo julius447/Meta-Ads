@@ -26,6 +26,18 @@
 }
 
 /*
+  Anton — kondenserad tung grotesk för NYHETSFORMATET.
+  Per ägardirektiv väljs typsnitt PER ANNONS: nyhets-native kräver den
+  kondenserade tabloid-vikten, inte Switzer. Trovärdighet > typografisk nyhet.
+*/
+@font-face {
+  font-family: 'Anton';
+  src: url('/fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: block;
+}
+
+/*
   Verktyget är medvetet ENBART mörkt. Annonser granskas mot en neutral mörk yta
   så att ljusa kreativ inte smälter ihop med sidbakgrunden — samma skäl som ett
   fotolabb har mörka väggar.

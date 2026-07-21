@@ -12,6 +12,8 @@ const basePath = isCI ? `/${repo}` : '';
 
 const nextConfig: NextConfig = {
   output: 'export',
+  // Dev-indikatorn får ALDRIG hamna i en renderad annons.
+  devIndicators: false,
   trailingSlash: true, // annars 404 på /campaign/x på GH Pages
   images: { unoptimized: true },
   basePath,
