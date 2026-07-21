@@ -14,10 +14,13 @@ export function AdFrame({
   ad,
   format,
   targetWidth = 260,
+  caption = true,
 }: {
   ad: AdEntry;
   format: FormatId;
   targetWidth?: number;
+  /** Av i kontaktarket — där är formatet redan givet av vyn. */
+  caption?: boolean;
 }) {
   const f = FORMATS[format];
   const z = targetWidth / f.w;
@@ -62,12 +65,14 @@ export function AdFrame({
           </div>
         )}
       </div>
-      <figcaption className="flex items-baseline justify-between text-[11px]">
-        <span className="font-medium text-neutral-300">{f.label}</span>
-        <span className="tabular-nums text-neutral-500">
-          {f.ratio} · {f.w}×{f.h}
-        </span>
-      </figcaption>
+      {caption && (
+        <figcaption className="flex items-baseline justify-between text-[11px]">
+          <span className="font-medium text-neutral-300">{f.label}</span>
+          <span className="tabular-nums text-neutral-500">
+            {f.ratio} · {f.w}×{f.h}
+          </span>
+        </figcaption>
+      )}
     </figure>
   );
 }

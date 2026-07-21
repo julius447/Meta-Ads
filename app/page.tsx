@@ -11,7 +11,7 @@ export default function Home() {
   }));
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-14">
+    <main className="mx-auto w-full max-w-6xl px-6 py-14">
       <header className="mb-12">
         <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500">
           Ampy · internt annonsverktyg

@@ -26,13 +26,16 @@ export default async function CampaignPage({
   const ads = adsByCampaign(campaign);
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-12">
-      <nav className="mb-10">
-        <Link
-          href="/"
-          className="text-sm text-neutral-500 transition hover:text-neutral-200"
-        >
+    <main className="mx-auto w-full max-w-6xl px-6 py-12">
+      <nav className="mb-10 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+        <Link href="/" className="text-neutral-500 transition hover:text-neutral-200">
           ← Alla kampanjer
+        </Link>
+        <Link
+          href={`/kontaktark/${slug}/feed`}
+          className="text-neutral-500 transition hover:text-neutral-200"
+        >
+          Kontaktark (granska allt på en skärm)
         </Link>
       </nav>
 

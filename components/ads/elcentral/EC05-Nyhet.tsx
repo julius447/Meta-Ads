@@ -5,156 +5,187 @@ import { FORMATS, type FormatId } from '@/lib/formats';
 /**
  * EC-05 · Nyhets-native
  *
- * KLON av ägarens Group 10-mall. Min första version underkändes, och han hade
- * rätt — felet var inte typsnittet utan LAYOUTEN:
- *   v1 (fel): vänsterställt, rubriken bröts på två rader per segment, subhead
- *             i samma tunga grad → kompakt och rörigt.
- *   v2 (nu):  CENTRERAT, EN rad per rubriksegment, linjer kant till kant med
- *             STATISTIK-chippet centrerat, subhead i lägre grad.
+ * KLON av ägarens EC-05A/B_final_4x5.png — inte av mitt minne av en Figma-mall.
  *
- * Text i bild är korrekt här — text ÄR nyhetsformatets innehåll.
+ * v1 och v2 underkändes båda. Orsaken var densamma: jag byggde efter en
+ * beskrivning i stället för att öppna referensen, som låg i public/assets/ads/
+ * hela tiden. Mätt mot originalet hade jag fel om justering (vänster, inte
+ * centrerat), chipfärg (röd, inte vit), gulmarkering (bara siffran, inte hela
+ * raden), underrubrikens register (gemener grotesk, inte versal Anton) och
+ * källraden (fanns, saknades hos mig).
  *
- * ⚠ FAKTAGRÄNS: siffran ärvs från ägarens mall och är INTE verifierad av mig.
- * Måste stämmas av mot Elsäkerhetsverket före live.
+ * Strukturen, mätt ur originalet:
+ *   blixt uppe vänster · rött chip · svart platta som hugger rubriken ·
+ *   helbredds svart band med underrubrik + källa.
+ * Chip och rubrikplatta ligger PÅ fotot; bandet går kant till kant.
  */
+
+const RED = '#E4142B';
 
 export interface NyhetProps {
   format: FormatId;
-  kicker?: string;
-  line1: string;
+  kicker: string;
+  /** Gulmarkeras. Bara siffran/måttet — aldrig hela raden. */
+  lead: string;
+  line1Rest: string;
   line2: string;
   sub: string;
+  source: string;
   photo: string;
   objectPosition?: string;
 }
 
 export function ECNyhetBase({
   format,
-  kicker = 'Statistik',
-  line1,
+  kicker,
+  lead,
+  line1Rest,
   line2,
   sub,
+  source,
   photo,
-  objectPosition = '55% 46%',
+  objectPosition = '50% 46%',
 }: NyhetProps) {
   const f = FORMATS[format];
   const isStory = format === 'story';
-  // Rubriken MÅSTE rymmas på en rad per segment — det är hela mallens rytm.
-  const h = isStory ? 88 : 84;
+  const pad = 65;
+  // Mätt mot originalet: rad 1 ska sluta vid ~845px, inte 965. 82→72.
+  const h = isStory ? 76 : format === 'square' ? 67 : 72;
 
   return (
     <AdCanvas
       format={format}
+      style={{ background: '#000' }}
       bleed={
         <>
-          <Photo src={photo} alt="" objectPosition={objectPosition} dim={0.5} />
-          {/* Band bakom textblocket. Utan detta slåss fotots ljuspunkter med
-              rubriken — plintarna i EC-05A åt upp "PÅ FEM ÅR". */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(180deg, rgba(6,8,20,0) 18%, rgba(6,8,20,0.72) 40%, rgba(6,8,20,0.78) 68%, rgba(6,8,20,0.35) 88%)',
-            }}
-          />
-          <Grain opacity={0.07} />
+          {/* Originalets foto är mörkare än något jag har extraherat. dim
+              kompenserar, men det är en approximation — [GAP] originalbild. */}
+          <Photo src={photo} alt="" objectPosition={objectPosition} dim={0.38} />
+          <Grain opacity={0.05} />
+
+          {/* Blixten uppe till vänster — finns i originalet, lätt att missa */}
+          <svg
+            width="34"
+            height="46"
+            viewBox="0 0 24 32"
+            style={{ position: 'absolute', left: 52, top: 46 }}
+            aria-hidden
+          >
+            <path d="M14 0L2 18h7l-2 14L21 13h-8l2-13z" fill="#fff" />
+          </svg>
+
+          <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
+            {/* Chip + rubrikplatta ligger PÅ fotot */}
+            <div style={{ paddingLeft: pad, paddingRight: pad }}>
+              <span
+                style={{
+                  display: 'inline-block',
+                  background: RED,
+                  color: '#fff',
+                  fontFamily: 'Anton, sans-serif',
+                  fontSize: isStory ? 40 : 36,
+                  letterSpacing: '0.03em',
+                  padding: '11px 20px 7px',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {kicker}
+              </span>
+            </div>
+
+            <div style={{ paddingLeft: pad, paddingRight: pad }}>
+              <h1
+                style={{
+                  display: 'inline-block',
+                  margin: 0,
+                  background: '#000',
+                  padding: '16px 22px 12px',
+                  fontFamily: 'Anton, sans-serif',
+                  fontWeight: 400,
+                  fontSize: h,
+                  // 1.0 klippte ringen på Å och prickarna på Ä mot raden ovanför.
+                  // Svenska diakriter kräver mer luft än engelsk versalsättning.
+                  lineHeight: 1.07,
+                  letterSpacing: '0.004em',
+                  textTransform: 'uppercase',
+                  color: '#fff',
+                }}
+              >
+                <span style={{ color: C.yellow }}>{lead}</span> {line1Rest}
+                <span style={{ display: 'block' }}>{line2}</span>
+              </h1>
+            </div>
+
+            {/* Bandet går kant till kant — underrubrik + källa */}
+            <div
+              style={{
+                background: '#000',
+                padding: `26px ${pad}px ${Math.max(f.safe.bottom, 78)}px`,
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: isStory ? 50 : 46,
+                  fontWeight: 600,
+                  lineHeight: 1.26,
+                  letterSpacing: '-0.014em',
+                  color: '#fff',
+                }}
+              >
+                {sub}
+              </p>
+              <p
+                style={{
+                  margin: '22px 0 0',
+                  fontSize: isStory ? 30 : 27,
+                  fontWeight: 500,
+                  letterSpacing: '-0.004em',
+                  color: 'rgba(255,255,255,0.62)',
+                }}
+              >
+                {source}
+              </p>
+            </div>
+          </div>
         </>
       }
     >
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: '50%',
-          transform: 'translateY(-42%)',
-          padding: `0 ${Math.max(f.safe.side, 40)}px`,
-          textAlign: 'center',
-        }}
-      >
-        {/* Kicker mellan två linjer kant till kant */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 26 }}>
-          <span style={{ flex: 1, height: 3, background: '#fff' }} />
-          <span
-            style={{
-              background: '#fff',
-              color: C.ink,
-              fontFamily: 'Anton, sans-serif',
-              fontSize: 32,
-              letterSpacing: '0.06em',
-              padding: '8px 20px 5px',
-              textTransform: 'uppercase',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {kicker}
-          </span>
-          <span style={{ flex: 1, height: 3, background: '#fff' }} />
-        </div>
-
-        <h1
-          style={{
-            margin: 0,
-            fontFamily: 'Anton, sans-serif',
-            fontWeight: 400,
-            fontSize: h,
-            lineHeight: 1.06,
-            letterSpacing: '0.002em',
-            textTransform: 'uppercase',
-            color: '#fff',
-            whiteSpace: 'nowrap',
-            textShadow: '0 3px 20px rgba(0,0,0,0.5)',
-          }}
-        >
-          {line1}
-          <span style={{ display: 'block', color: C.yellow }}>{line2}</span>
-        </h1>
-
-        <p
-          style={{
-            margin: '18px auto 0',
-            fontFamily: 'Anton, sans-serif',
-            fontSize: isStory ? 46 : 42,
-            lineHeight: 1.14,
-            letterSpacing: '0.012em',
-            textTransform: 'uppercase',
-            color: '#fff',
-            maxWidth: 900,
-            textShadow: '0 2px 14px rgba(0,0,0,0.5)',
-          }}
-        >
-          {sub}
-        </p>
-      </div>
+      <div />
     </AdCanvas>
   );
 }
 
-/** EC-05A — händelse-statistiken. */
+/** EC-05A — händelsestatistiken. */
 export function EC05ANyhet({ format }: { format: FormatId }) {
   return (
     <ECNyhetBase
       format={format}
-      line1="298 händelser på fem år –"
-      line2="felet satt i elcentralen."
+      kicker="Statistik"
+      lead="298"
+      line1Rest="händelser på fem år –"
+      line2="felet satt i elcentralen"
       sub="Villor och radhus är överrepresenterade – och felet syns sällan i förväg"
-      photo="/photos/elcentral-handske.jpg"
+      source="Källa: Elsäkerhetsverket, 2018–2022"
+      photo="/photos/porslinsproppar.jpg"
+      objectPosition="50% 40%"
     />
   );
 }
 
-/** EC-05B — samma mall, åldersvinkeln, på porslinspropps­fotot. */
+/** EC-05B — fältmätningen. */
 export function EC05BNyhet({ format }: { format: FormatId }) {
   return (
     <ECNyhetBase
       format={format}
-      kicker="Elsäkerhet"
-      line1="Porslinsproppar sitter kvar"
-      line2="i tusentals svenska villor."
-      sub="De saknar oftast jordfelsbrytare – skyddet som bryter strömmen i tid"
-      photo="/photos/porslinsproppar.jpg"
-      objectPosition="50% 44%"
+      kicker="Från fältet"
+      lead="78 grader"
+      line1Rest="i proppskåpet –"
+      line2="ingen hade märkt något"
+      sub="Ett glapp i skenan kan hetta upp – ofta utan att något syns"
+      source="Uppmätt vid utryckning i januari"
+      photo="/photos/elcentral-handske.jpg"
+      objectPosition="55% 46%"
     />
   );
 }
