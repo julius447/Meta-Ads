@@ -24,7 +24,11 @@ export function EC01Morkret({ format }: { format: FormatId }) {
   const isStory = format === 'story';
   // Kvadrat har minst höjd → texten hamnar högre upp i bilden och behöver
   // att scrimmet börjar tidigare för att få fäste.
-  const scrimStop = format === 'story' ? '52%' : format === 'square' ? '30%' : '40%';
+  const scrimStop = format === 'story' ? '44%' : format === 'square' ? '30%' : '40%';
+  // Story: 0.94 gjorde nedre femtedelen till en platt marinblå platta över
+  // golvet — det läste som en trasig beskärning. 0.84 låter mattans textur
+  // ligga kvar hela vägen ner, så bilden bleeder ut i stället för att kapas.
+  const scrimTo = isStory ? 0.84 : 0.94;
 
   return (
     <AdCanvas
@@ -36,12 +40,18 @@ export function EC01Morkret({ format }: { format: FormatId }) {
             alt="Person lyser med mobilen mot elcentralen i en mörk hall"
             /* Story är högre → panna panoreringen uppåt så skåpet hamnar i
                den övre halvan och texten får rent mörker under sig. */
-            objectPosition={isStory ? '50% 30%' : '50% 42%'}
+            objectPosition={isStory ? '50% 34%' : '50% 42%'}
             dim={0.06}
+            /* Story: fotot är 1611×2000 (0,81) och täcker 9:16 genom att
+               beskäras BARA horisontellt — hela dess höjd visas, inklusive den
+               helsvarta golvänden, som blev en död platta i nedre femtedelen.
+               objectPosition har ingen verkan utan vertikalt överskott, så vi
+               skalar upp för att skapa det. 1,25× är taket innan bilden mjuknar. */
+            style={isStory ? { transform: 'scale(1.25)', transformOrigin: '50% 46%' } : undefined}
           />
           {/* Scrimmet måste börja PRECIS ovanför textblocket, annars grumlar det
               bilden i onödan (story) eller ger för dåligt fäste (kvadrat). */}
-          <BottomScrim stop={scrimStop} to={0.94} />
+          <BottomScrim stop={scrimStop} to={scrimTo} />
           <Grain />
         </>
       }
