@@ -46,7 +46,7 @@ function anchor(corner: Corner): React.CSSProperties {
   return { ...base, ...v, ...h };
 }
 
-function Cell({ cell }: { cell: (typeof CELLS)[number] }) {
+function Cell({ cell, bare = false }: { cell: (typeof CELLS)[number]; bare?: boolean }) {
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -55,6 +55,15 @@ function Cell({ cell }: { cell: (typeof CELLS)[number] }) {
         alt=""
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
       />
+      {/* Bart läge: bara fotona ihop, ägaren sätter all text själv i Figma */}
+      {bare ? null : <CellText cell={cell} />}
+    </div>
+  );
+}
+
+function CellText({ cell }: { cell: (typeof CELLS)[number] }) {
+  return (
+    <>
       {/* Läsbarhetslager: mörkare mot ytterhörnet där texten sitter */}
       <div
         style={{
@@ -87,7 +96,7 @@ function Cell({ cell }: { cell: (typeof CELLS)[number] }) {
         </div>
         <span style={{ fontSize: 26, fontWeight: 500, color: 'rgba(255,255,255,0.62)', marginTop: 4 }}>kr/år</span>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -221,7 +230,7 @@ function Center({ variant }: { variant: Variant }) {
   );
 }
 
-export function EN05Kvartetten({ format, variant = 'A' }: { format: FormatId; variant?: Variant }) {
+export function EN05Kvartetten({ format, variant = 'A', bare = false }: { format: FormatId; variant?: Variant; bare?: boolean }) {
   return (
     <div
       style={{
@@ -236,26 +245,28 @@ export function EN05Kvartetten({ format, variant = 'A' }: { format: FormatId; va
       }}
     >
       {CELLS.map((c) => (
-        <Cell key={c.key} cell={c} />
+        <Cell key={c.key} cell={c} bare={bare} />
       ))}
 
       {/* hårfina delare */}
       <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: 'rgba(255,255,255,0.14)', transform: 'translateX(-1px)' }} />
       <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 2, background: 'rgba(255,255,255,0.14)', transform: 'translateY(-1px)' }} />
 
-      <div
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Center variant={variant} />
-      </div>
+      {!bare && (
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Center variant={variant} />
+        </div>
+      )}
     </div>
   );
 }
@@ -263,3 +274,5 @@ export function EN05Kvartetten({ format, variant = 'A' }: { format: FormatId; va
 export const EN05KvartettenA = ({ format }: { format: FormatId }) => <EN05Kvartetten format={format} variant="A" />;
 export const EN05KvartettenB = ({ format }: { format: FormatId }) => <EN05Kvartetten format={format} variant="B" />;
 export const EN05KvartettenC = ({ format }: { format: FormatId }) => <EN05Kvartetten format={format} variant="C" />;
+/** Bar fotobas — inga etiketter, inga priser, ingen CTA. Ägaren sätter text själv. */
+export const EN05KvartettenBar = ({ format }: { format: FormatId }) => <EN05Kvartetten format={format} bare />;
