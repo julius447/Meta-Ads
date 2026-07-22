@@ -33,7 +33,7 @@ const COMPONENT_ADS: AdEntry[] = [
   comp('EN05-KV-B', 'Energi', { square: true }),
   comp('EN05-KV-C', 'Energi', { square: true }),
   comp('EN05-KV-BAR', 'Energi', { square: true, feed: true }),
-  comp('EN05-KV-LBL', 'Energi', { square: true, feed: true }),
+  comp('EN05-KV-LBL', 'Energi', { square: true, feed: true, story: true }),
 ];
 
 /**

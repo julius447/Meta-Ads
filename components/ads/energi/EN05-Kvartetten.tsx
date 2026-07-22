@@ -27,18 +27,17 @@ const C = {
   ink: '#05060f',
 };
 
-/** Dyrast → billigast. Hörnet styr var text ankras. */
+/** Dyrast → billigast. Hörnet styr var text ankras. Priser owner-satta 2026-07-22. */
 const CELLS = [
-  { key: 'direktel', label: 'Direktel', price: '34 500', photo: '/photos/en05/direktel.jpg', corner: 'tl' },
-  { key: 'luftluft', label: 'Luft–luft', price: '22 000', photo: '/photos/en05/luftluft.jpg', corner: 'tr' },
-  { key: 'luftvatten', label: 'Luft–vatten', price: '15 500', photo: '/photos/en05/luftvatten.jpg', corner: 'bl' },
-  { key: 'bergvarme', label: 'Bergvärme', price: '12 000', photo: '/photos/en05/bergvarme.jpg', corner: 'br' },
+  { key: 'direktel', label: 'Direktel', price: '43 000', photo: '/photos/en05/direktel.jpg', corner: 'tl' },
+  { key: 'luftluft', label: 'Luftvärmepump', price: '25 000', photo: '/photos/en05/luftluft.jpg', corner: 'tr' },
+  { key: 'luftvatten', label: 'Luft–vatten', price: '20 000', photo: '/photos/en05/luftvatten.jpg', corner: 'bl' },
+  { key: 'bergvarme', label: 'Bergvärme', price: '19 000', photo: '/photos/en05/bergvarme.jpg', corner: 'br' },
 ] as const;
 
 type Corner = (typeof CELLS)[number]['corner'];
 
-function anchor(corner: Corner): React.CSSProperties {
-  const pad = 54;
+function anchor(corner: Corner, pad = 54): React.CSSProperties {
   const base: React.CSSProperties = { position: 'absolute', display: 'flex', flexDirection: 'column' };
   const v = corner[0] === 't' ? { top: pad } : { bottom: pad };
   const h = corner[1] === 'l' ? { left: pad, alignItems: 'flex-start', textAlign: 'left' as const }
@@ -46,7 +45,7 @@ function anchor(corner: Corner): React.CSSProperties {
   return { ...base, ...v, ...h };
 }
 
-function Cell({ cell, bare = false }: { cell: (typeof CELLS)[number]; bare?: boolean }) {
+function Cell({ cell, bare = false, pad }: { cell: (typeof CELLS)[number]; bare?: boolean; pad?: number }) {
   return (
     <div style={{ position: 'relative', overflow: 'hidden' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -56,12 +55,12 @@ function Cell({ cell, bare = false }: { cell: (typeof CELLS)[number]; bare?: boo
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
       />
       {/* Bart läge: bara fotona ihop, ägaren sätter all text själv i Figma */}
-      {bare ? null : <CellText cell={cell} />}
+      {bare ? null : <CellText cell={cell} pad={pad} />}
     </div>
   );
 }
 
-function CellText({ cell }: { cell: (typeof CELLS)[number] }) {
+function CellText({ cell, pad }: { cell: (typeof CELLS)[number]; pad?: number }) {
   return (
     <>
       {/* Läsbarhetslager: mörkare mot ytterhörnet där texten sitter */}
@@ -75,7 +74,7 @@ function CellText({ cell }: { cell: (typeof CELLS)[number] }) {
               : 'linear-gradient(0deg, rgba(5,6,15,0.72) 0%, rgba(5,6,15,0.12) 46%, rgba(5,6,15,0.30) 100%)',
         }}
       />
-      <div style={anchor(cell.corner)}>
+      <div style={anchor(cell.corner, pad)}>
         <span
           style={{
             fontSize: 27,
@@ -243,13 +242,26 @@ export function EN05Kvartetten({
   /** Behåll hörnetiketter + priser men dölj mittmedaljongen (ägaren sätter CTA). */
   noCenter?: boolean;
 }) {
-  return (
+  const isStory = format === 'story';
+  const canvasH = isStory ? 1920 : format === 'feed' ? 1350 : 1080;
+
+  // Story: rutnätet får INTE nå kanterna — Instagram/Facebook lägger
+  // profil/namn i toppen (~14%) och CTA-sticker + "Skicka meddelande" i botten
+  // (~20%). Hela rutnätet inkl. hörnpriser måste ligga innanför safe zone,
+  // annars kapas siffrorna. Därför krymps det till safe-bandet med navy-ram.
+  const SAFE_TOP = 300;
+  const SAFE_BOTTOM = 1536; // 1920 − 20% (Stories-stickerns höjd)
+  const gridTop = isStory ? SAFE_TOP : 0;
+  const gridH = isStory ? SAFE_BOTTOM - SAFE_TOP : canvasH;
+
+  const grid = (
     <div
       style={{
-        position: 'relative',
+        position: 'absolute',
+        left: 0,
+        top: gridTop,
         width: 1080,
-        height: format === 'story' ? 1920 : format === 'feed' ? 1350 : 1080,
-        background: C.ink,
+        height: gridH,
         overflow: 'hidden',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
@@ -257,13 +269,10 @@ export function EN05Kvartetten({
       }}
     >
       {CELLS.map((c) => (
-        <Cell key={c.key} cell={c} bare={bare} />
+        <Cell key={c.key} cell={c} bare={bare} pad={isStory ? 72 : 54} />
       ))}
-
-      {/* hårfina delare */}
       <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: 'rgba(255,255,255,0.14)', transform: 'translateX(-1px)' }} />
       <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 2, background: 'rgba(255,255,255,0.14)', transform: 'translateY(-1px)' }} />
-
       {!bare && !noCenter && (
         <div
           style={{
@@ -279,6 +288,12 @@ export function EN05Kvartetten({
           <Center variant={variant} />
         </div>
       )}
+    </div>
+  );
+
+  return (
+    <div style={{ position: 'relative', width: 1080, height: canvasH, background: C.ink, overflow: 'hidden' }}>
+      {grid}
     </div>
   );
 }
