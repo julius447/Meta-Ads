@@ -230,7 +230,19 @@ function Center({ variant }: { variant: Variant }) {
   );
 }
 
-export function EN05Kvartetten({ format, variant = 'A', bare = false }: { format: FormatId; variant?: Variant; bare?: boolean }) {
+export function EN05Kvartetten({
+  format,
+  variant = 'A',
+  bare = false,
+  noCenter = false,
+}: {
+  format: FormatId;
+  variant?: Variant;
+  /** Inga etiketter, inga priser, ingen mitt. Bara fotona. */
+  bare?: boolean;
+  /** Behåll hörnetiketter + priser men dölj mittmedaljongen (ägaren sätter CTA). */
+  noCenter?: boolean;
+}) {
   return (
     <div
       style={{
@@ -252,7 +264,7 @@ export function EN05Kvartetten({ format, variant = 'A', bare = false }: { format
       <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: 'rgba(255,255,255,0.14)', transform: 'translateX(-1px)' }} />
       <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 2, background: 'rgba(255,255,255,0.14)', transform: 'translateY(-1px)' }} />
 
-      {!bare && (
+      {!bare && !noCenter && (
         <div
           style={{
             position: 'absolute',
@@ -276,3 +288,7 @@ export const EN05KvartettenB = ({ format }: { format: FormatId }) => <EN05Kvarte
 export const EN05KvartettenC = ({ format }: { format: FormatId }) => <EN05Kvartetten format={format} variant="C" />;
 /** Bar fotobas — inga etiketter, inga priser, ingen CTA. Ägaren sätter text själv. */
 export const EN05KvartettenBar = ({ format }: { format: FormatId }) => <EN05Kvartetten format={format} bare />;
+/** Hörnetiketter + priser, men INGEN mittkopia — ägaren sätter CTA:n själv. */
+export const EN05KvartettenLabels = ({ format }: { format: FormatId }) => (
+  <EN05Kvartetten format={format} noCenter />
+);
