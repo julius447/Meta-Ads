@@ -6,6 +6,7 @@ import { EC05ANyhet, EC05BNyhet } from './elcentral/EC05-Nyhet';
 import { EC09Fragor } from './elcentral/EC09-Fragor';
 import { EC08Sms } from './elcentral/EC08-Sms';
 import { EC13BakomLuckan } from './elcentral/EC13-BakomLuckan';
+import { EN05KvartettenA, EN05KvartettenB, EN05KvartettenC } from './energi/EN05-Kvartetten';
 
 export type AdComponent = ComponentType<{ format: FormatId }>;
 
@@ -18,4 +19,7 @@ export const AD_COMPONENTS: Record<string, AdComponent> = {
   'EC-09': EC09Fragor,
   'EC-08': EC08Sms,
   'EC-13': EC13BakomLuckan,
+  'EN05-KV-A': EN05KvartettenA,
+  'EN05-KV-B': EN05KvartettenB,
+  'EN05-KV-C': EN05KvartettenC,
 };

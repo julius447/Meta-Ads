@@ -29,6 +29,9 @@ const COMPONENT_ADS: AdEntry[] = [
   comp('EC-09', 'Elcentral'),
   comp('EC-08', 'Elcentral'),
   comp('EC-13', 'Elcentral'),
+  comp('EN05-KV-A', 'Energi', { square: true }),
+  comp('EN05-KV-B', 'Energi', { square: true }),
+  comp('EN05-KV-C', 'Energi', { square: true }),
 ];
 
 /**

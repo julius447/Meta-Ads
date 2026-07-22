@@ -138,8 +138,8 @@ function Card({ q, w, seed }: { q: string; w: number; seed: number }) {
 /** Ägarens copy — ordagrant. Ändra inte utan hans ord. */
 const CAPTION_LINES = [
   { t: '”MÅSTE JAG BYTA ELCENTRAL?”', size: 60, caps: true },
-  { t: 'Oftast är svaret nej.', size: 58, caps: false },
-  { t: 'Elcentral-kollen visar vad du', size: 58, caps: false },
+  { t: 'Nej – oftast inte.', size: 58, caps: false },
+  { t: 'Elcentralkollen visar vad du', size: 58, caps: false },
   { t: 'behöver göra 👇', size: 58, caps: false },
 ];
 
