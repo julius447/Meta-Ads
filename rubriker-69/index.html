@@ -1,0 +1,726 @@
+<!doctype html><html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rubrikverkstaden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#00a991;--teal-d:#00806e;--ink:#090b32;--ink2:#3d4060;--mut:#6b6e86;--bg:#f6f7f9;--card:#fff;--line:#e3e5ec;--soft:#e8f7f4;--warn:#fff4e0;--warnb:#f0b44c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#eef0f7;--ink2:#c7cae0;--mut:#9a9db5;--bg:#11132a;--card:#1a1d3a;--line:#2c2f52;--soft:#123b3a;--warn:#3a2f17;--warnb:#c99236}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Outfit,system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 16px 80px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.08;margin:0 0 12px;letter-spacing:-.01em}
+.lead{font-size:18px;color:var(--ink2);max-width:760px;margin:0 0 24px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.box h2{font-size:18px;margin:0 0 10px}.box ul,.box ol{margin:0;padding-left:18px}.box li{margin:6px 0}
+.top a{color:inherit;text-decoration:none;display:block}.top span{font-weight:700;display:block}.top small{color:var(--mut)}
+.box.warn{background:var(--warn);border-color:var(--warnb)}
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 16px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:2}
+.filter button{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px}
+.filter button[aria-pressed="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.card{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:24px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin:0 0 20px}
+.media{display:grid;gap:10px;align-content:start;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.media img{width:100%;border-radius:12px;display:block;border:1px solid var(--line)}
+.media img:only-child{grid-column:1/-1}
+.eyebrow{margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-d)}
+@media (prefers-color-scheme:dark){.eyebrow{color:var(--teal)}}
+.lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+.now{position:relative;border:1px dashed var(--line);border-radius:12px;padding:12px 70px 12px 14px;margin-bottom:14px}.now.keep{border:2px solid var(--teal);background:var(--soft)}.now p{margin:0;font-weight:600;color:var(--ink2)}
+.sc{font-weight:700;font-variant-numeric:tabular-nums;color:var(--mut);font-size:14px}.now .sc{position:absolute;right:14px;top:12px}
+.props{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.prop{border:1px solid var(--line);border-radius:14px;padding:14px}.prop.star{border:2px solid var(--teal);background:var(--soft)}
+.ph{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.num{width:24px;height:24px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:13px;font-weight:700}
+.star .num{background:var(--teal);color:#fff}.mek{font-size:13px;color:var(--mut);font-weight:600}.ph .sc{margin-left:auto}
+.pick{background:var(--teal);color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+.rub{font-size:clamp(20px,2.4vw,26px);font-weight:800;line-height:1.2;margin:8px 0 6px;letter-spacing:-.005em}
+.prop p{margin:6px 0}.was{font-size:13px;color:var(--mut)}.risk{font-size:14px;color:var(--ink2)}.gr{font-size:14px;color:var(--ink2);border-left:3px solid var(--teal);padding-left:8px}
+details summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--ink2);min-height:32px;display:flex;align-items:center}
+dl{margin:8px 0 0}dt{font-weight:700;font-size:14px;margin-top:8px}dd{margin:2px 0 0;color:var(--ink2);font-size:15px}
+.why{margin:14px 0 0}.why p{margin:0}.diag{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}.para{font-size:15px;color:var(--ink2)}
+.flags{margin-top:12px;background:var(--warn);border:1px solid var(--warnb);border-radius:12px;padding:10px 14px}.flags ul{margin:0;padding-left:18px;font-size:14px}
+@media (max-width:760px){.card{grid-template-columns:1fr;padding:16px}.media{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
+</style></head><body><main class="wrap">
+<p class="eyebrow">Uppdrag 69 · 24 annonsgrupper · 34 bilder</p>
+<h1>Rubrikverkstaden</h1>
+<p class="lead">Tre nya rubriker per annons från Figma-sidan "Statiska koncept nov–dec", var och en med en egen mekanism, betyg på samma skala och vårt val. Under varje annons finns djupanalysen av dagens rubrik ur sex perspektiv.</p>
+<div class="grid3">
+ <section class="box top"><h2>Starkaste rubrikerna</h2><ol><li><a href="#g10"><span>06.40 och minus fyra. Lenas bil är laddad.</span><small>Grupp 10 · Nuvarande rubrik, specifik scen som bilden matchar exakt.</small></a></li><li><a href="#g05"><span>Behöver jag en laddbox? Ibland är svaret nej.</span><small>Grupp 05 · Ärlig nej-sägare, batchens starkaste förtroendevinkel.</small></a></li><li><a href="#g04"><span>Ingen rea. Avdraget halverar redan priset.</span><small>Grupp 04 · Vänder Black Friday-bruset till en sann fördel och kvittot bevisar den.</small></a></li><li><a href="#g07"><span>Så ser 4 490 kr ut på väggen.</span><small>Grupp 07 · Knyter priset till den färdiga installationen i en mening.</small></a></li><li><a href="#g12"><span>Grannen frågade vad den kostade. Två gånger.</span><small>Grupp 12 · Avbrott med nyfikenhetslucka som brickan löser direkt.</small></a></li><li><a href="#g19"><span>Allt på bilden ingår. Även elektrikern.</span><small>Grupp 19 · Gör erbjudandets viktigaste del, installationen, till poängen.</small></a></li><li><a href="#g14"><span>Hennes elbil. Hans laddhybrid. Samma laddbox.</span><small>Grupp 14 · Nuvarande rubrik, identitet och bild i perfekt samspel.</small></a></li></ol></section>
+ <section class="box"><h2>Det vi lärde oss</h2><ul><li>Det största problemet i batchen sitter i bilderna, inte i rubrikerna: sju noder visar 4 450 kr, tre visar &quot;Betala senast 31 december&quot; och fem visar Black Friday utan något eget erbjudande.</li><li>4 450 kr är Tesla Wall Connectors guidepris i faktalagret, så felet har troligen kopierats från fel rad; rätta alla noder samtidigt.</li><li>Tre grupper ville skriva &quot;ingår&quot; om installationen (01, 15, 19); jag flyttade 15 till en callout så att batchen inte får tre annonser med samma budskap.</li><li>Brinna inne-familjen (20–24) är fem grupper och 11 noder med i stort sett samma rubrik; även med nya rubriker är det batchens största Andromeda-risk, så kör högst två av dem samtidigt.</li><li>Skribenterna satte för höga betyg, i snitt 2–4 poäng; bara 05, 04, 07 och 10 klarar 32 hos mig, resten är testbara.</li><li>Tre nuvarande rubriker ska stå kvar (06, 10, 14) och en (16) slår ingen av de nya; de korta berättelserubrikerna är redan Ampys starkaste register.</li><li>Två förslag skrev &quot;före 15 december&quot;; deadlinen är &quot;beställ senast 15 december&quot;, och &quot;före&quot; betyder en dag tidigare.</li></ul></section>
+ <section class="box warn"><h2>Måste rättas oavsett rubrik</h2><ul><li>4 450 kr / 8 900 kr i stället för 4 490 / 8 980: 2287-6197, 2287-6258, 2209-4634, 2209-4646, 2285-1891, 2287-1968, 2287-5979.</li><li>&quot;Betala senast 31 december&quot; saknar belägg: 2209-4646, 2287-1968, 2287-5979 (ska vara &quot;Beställ senast 15 december&quot;).</li><li>&quot;BLACK FRIDAY&quot; utan eget erbjudande: 1859-400 och 1879-605 (underrubriken), 2285-1891, 2230-5696, 2230-5728 (etiketten).</li><li>2209-4634 saknar deadline-pillret helt.</li><li>Stavning: &quot;Grön Teknik-avdrag&quot; (2285-1891), &quot;Grönt Teknik-avdrag&quot; (2287-1968, 2287-5979), &quot;efter grönt-avdrag&quot; med bindestreck (2209-4634, 2209-4646, 2287-1968, 2287-5979); enhetligt &quot;grön teknik-avdrag&quot; och &quot;efter grönt avdrag&quot;.</li><li>&quot;Tillverkad i&quot; + svensk flagga på 2230-5757 (Hager) och &quot;Tillverkad i Norge&quot; på 2287-6258 och 2287-5979 finns inte i faktalagret: ta bort eller belägg.</li><li>2287-6258: &quot;Personskyddsautomat&quot; ska vara &quot;Säkring och jordfelsbrytare&quot;.</li><li>2285-1891: etiketten säger &quot;Installation + material&quot; i stället för &quot;efter grönt avdrag&quot;, så priset saknar sitt villkor.</li><li>2287-1968: ett lösryckt &quot;B&quot; under laddboxen.</li><li>1854-680: &quot;Låg säkerhet&quot; utan &quot;kan&quot; (⚑) och &quot;Byggt för varje natt&quot; ska vara &quot;Byggd&quot;.</li><li>1968-643 och 1996-1102/1105/1107: &quot;när elen är billigast&quot; utan villkoret tim- eller kvartspris.</li><li>2190-4584: &quot;10 meter kabel ingår i priset&quot; mot &quot;10 m installationskabel ingår&quot; på övriga bilder.</li></ul></section>
+</div>
+<p class="lead" style="font-size:15px">Betygen följer en mall med tio viktade kriterier, max 40 poäng, byggd på Ogilvy, Hormozi och Vaynerchuk, praktikerforum, Metas riktlinjer för 2025–2026 och 38 bekräftade annonser i Ads Library från andra branscher. En rubrik som inte är sann och belagd underkänns oavsett poäng.</p>
+<nav class="filter" aria-label="Filtrera"><button aria-pressed="true" data-f="alla">Alla</button><button aria-pressed="false" data-f="Laddbox">Laddbox</button><button aria-pressed="false" data-f="Elcentral">Elcentral</button></nav>
+<article class="card" data-prod="Laddbox" id="g01">
+      <div class="media"><img loading="lazy" src="bilder/1850-373.jpg" alt="Annons 1850-373"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 01 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>FAST PRIS. / INSTALLATIONEN INGÅR.</p><span class="sc">30/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Invändning</span><span class="sc">31/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Vad kostar installationen? Den ingår.</p>
+          
+          <p>Frågan är exakt den kunden tänker när hen ser ett laddboxpris, och svaret kommer på tre ord. Brickan bredvid (&quot;Zaptec Go + installation 4 490 kr&quot;) bevisar svaret direkt.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ett löfte i kundens egen fråga, med beviset inom synhåll.</dd><dt>Hormozi</dt><dd>Angriper ansträngningen och osäkerheten i nämnaren på en gång.</dd><dt>Vaynerchuk</dt><dd>Låter som en replik från en elektriker, inte som en broschyr.</dd></dl></details>
+          <p class="risk">Risk: &quot;Den ingår&quot; gäller standardinstallationen (10 m kabel); längre kabel kan kosta mer, vilket finstilten bör säga en gång.</p><p class="gr">Granskning: Sann (installationen ingår i 4 490 kr); &quot;Den ingår&quot; är lite stelt men kort.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Nyhet / besked</span><span class="sc">27/40</span></div>
+          <p class="rub">Årets avdrag? Beställ senast 15 december.</p>
+          
+          <p>Det enda som är äkta nytt i november är att årets avdrag stänger, och vinterbilden bär den känslan. Datumet är belagt och ger en verklig anledning att agera nu.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Nyheter läses, och den här är sann och daterad.</dd><dt>Hormozi</dt><dd>Kortar tidsfördröjningen genom ett skäl att inte vänta.</dd><dt>Vaynerchuk</dt><dd>En högerkrok; den fungerar bara om andra annonser i flödet har gett värde först.</dd></dl></details>
+          <p class="risk">Risk: Grupp 20–24 äger deadlinevinkeln; kör den här bara om brinna inne-gruppen pausas, annars blir det en nära dubblett för Andromeda.</p><p class="gr">Granskning: Deadlinevinkeln ägs av 20–24, nära dubblett.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Callout / etikett</span><span class="sc">26/40</span></div>
+          <p class="rub">Elbil i Storstockholm? Installationen ingår.</p>
+          
+          <p>Ogilvys lokala callout gör att rätt läsare känner igen sig, och erbjudandet följer direkt. Platsen gör annonsen konkret utan att bli ett nationellt anspråk.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropa på målgruppen och staden, sedan löftet.</dd><dt>Hormozi</dt><dd>Etikett plus resultat, två calloutnivåer staplade.</dd><dt>Vaynerchuk</dt><dd>Kontexten är lokal, och det ska rubriken också vara.</dd></dl></details>
+          <p class="risk">Risk: Utesluter Mälardalen-publiken; använd bara i en uppsättning som riktas mot Storstockholm.</p><p class="gr">Granskning: Utesluter Mälardalen och callouten är bred.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Frågan gör brickan till svaret i stället för att rubrik och bricka säger samma sak. Den slår nuvarande men inte med fyra poäng; vinsten är samspelet. Ligger nära 19 (&quot;ingår&quot;) i ordval, men bild och mekanism skiljer, så den får stå.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Rubriken tar bort den dolda kostnaden, som är den största oron vid köp av laddbox. Den talar inte till någon särskild, så självreferensen saknas helt.</dd><dt>Copywriting</dt><dd>Den är kort, sann och har en fördel, men &quot;fast pris&quot; är ett påstående som alla hantverkare gör. Den svarar på en fråga som läsaren inte hunnit ställa.</dd><dt>Försäljning</dt><dd>Den sänker ansträngningen i Hormozis nämnare, vilket är rätt. Men den låter som ett villkor och inte som ett svar på kundens egen invändning.</dd><dt>Marknadsföring</dt><dd>Snön på taket ger en vinterkänsla som rubriken inte använder alls. Den dolda raden med [DATUM] visar att bilden är tänkt för deadline, men den är inte ifylld.</dd><dt>Best practice</dt><dd>Formatet produkt plus stor rubrik plus prisbricka är toppformatet enligt Motion. Rubriken och brickan säger delvis samma sak (&quot;installation&quot; står i båda).</dd><dt>E-handel</dt><dd>Det motsvarar Hemfrids &quot;Fönsterputs ingår&quot;, fast utan en fråga eller köpsituation framför. De bästa öppnar med köparens fråga och låter etiketten stänga.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Ingen underrubrik behövs, de två chipsen bär beviset. Den dolda raden &quot;Beställ senast [DATUM] för installation före jul&quot; ska inte tändas: &quot;före jul&quot; saknar belägg. Använd i så fall &quot;Beställ senast 15 december&quot; och bara om rubriken inte redan säger datumet.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Dold rad &quot;Beställ senast [DATUM] för installation före jul&quot;: datumet är tomt och &quot;före jul&quot; saknar belägg. Rätt datum är 15 december (beställning).</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g02">
+      <div class="media"><img loading="lazy" src="bilder/1854-680.jpg" alt="Annons 1854-680"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 02 · Laddbox · 1 bild</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>VÄGGUTTAG / ELLER LADDBOX?</p><span class="sc">32/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Ja-fråga</span><span class="sc">31/40</span></div>
+          <p class="rub">Laddar du fortfarande i vägguttaget?</p>
+          
+          <p>Bara den som har elbil och laddar i vägguttaget svarar ja, och det är den hetaste köparen. Bilden under ger svaret på vad hen ska göra i stället.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på exakt rätt läsare.</dd><dt>Hormozi</dt><dd>En smal ja-fråga, aldrig en bred.</dd><dt>Vaynerchuk</dt><dd>Låter som något en kompis säger i garaget.</dd></dl></details>
+          <p class="risk">Risk: &quot;Fortfarande&quot; kan uppfattas som pekpinne; tonen räddas av att bilden är saklig.</p><p class="gr">Granskning: &quot;Fortfarande&quot; är en lätt pik men inom tonen.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">29/40</span></div>
+          <p class="rub">Nödladdning eller laddbox?</p>
+          
+          <p>Den döper om vägguttaget till det faktalagret säger att det är, och valet blir då uppenbart. Formatets logik är kvar men vägt åt rätt håll.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik och utan ordvits; ordet &quot;nödladdning&quot; gör jobbet.</dd><dt>Hormozi</dt><dd>Gör alternativet sämre i läsarens huvud utan att svartmåla.</dd><dt>Vaynerchuk</dt><dd>Ger kunskap som läsaren kan ta med sig, ett jab.</dd></dl></details>
+          <p class="risk">Risk: Upprepar listraden &quot;Endast för nödladdning&quot;; ta bort den raden om rubriken används.</p><p class="gr">Granskning: Upprepar listraden &quot;Endast för nödladdning&quot;.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Varning (en anledning)</span><span class="sc">25/40</span></div>
+          <p class="rub">Ett vägguttag är byggt för nödladdning.</p>
+          
+          <p>En saklig mening som många elbilsägare inte vet, sagd av den som vet. Den förklarar varför listan till höger finns.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fakta säljer mer än adjektiv.</dd><dt>Hormozi</dt><dd>Höjer upplevd risk med alternativet och därmed värdet av laddboxen.</dd><dt>Vaynerchuk</dt><dd>Ger värde utan att be om något.</dd></dl></details>
+          <p class="risk">Risk: Kan läsas som skrämsel om tonen blir fel; håll den som fakta, inte som varning med utropstecken.</p><p class="gr">Granskning: Egenskap och varning, ingen fördel; nära 08:s paragraf.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Behåll dagens rubrik: inget förslag slår den (bästa förslaget 31/40 mot dagens 32/40). Förslagen finns kvar som testvarianter. Granskarens resonemang: Ja-frågan väljer ut den som redan har problemet och låter jämförelsen i bilden ge svaret. Nuvarande är nästan lika bra och ett fullgott A i ett A/B-test.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Ett val mellan två föremål är lätt att bearbeta, och bilden avgör valet åt läsaren. Men frågan pekar inte på läsarens egen situation, så den som laddar i vägguttaget i dag ser ingen anledning att känna sig träffad.</dd><dt>Copywriting</dt><dd>Rubriken namnger de två spalterna exakt och förstärker formatets logik, som den ska. Den är en av batchens starkaste redan nu.</dd><dt>Försäljning</dt><dd>Den bästa köparen är den som redan har elbil och laddar i vägguttaget. Rubriken talar till alla som funderar och inte till den som redan har problemet.</dd><dt>Marknadsföring</dt><dd>Vi mot dem är ett av de tre format som bär flest vinnare enligt Alex Cooper. Här är den ett ärligt jab, eftersom listan ger kunskap och inte bara pris.</dd><dt>Best practice</dt><dd>Den motsvarar &quot;DIY vs LeafFilter&quot; och HelloFreshs delade bild. Rubriken är kort och läses på mobil.</dd><dt>E-handel</dt><dd>Jämförelsen sker mot det alternativ köparen redan använder, vilket är mönster 1 i Ad Library-researchen. Det är rätt grepp.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Listorna ska vara kvar, men &quot;Låg säkerhet / Hög säkerhet&quot; är ett säkerhetspåstående utan &quot;kan&quot; och bör bli &quot;Inte byggt för daglig laddning&quot; eller liknande (⚑ till Julius). &quot;Byggt för varje natt&quot; ska vara &quot;Byggd&quot; (en laddbox).</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>&quot;Låg säkerhet&quot; är ett säkerhetspåstående utan &quot;kan&quot; (⚑).</li><li>&quot;Byggt för varje natt&quot; ska vara &quot;Byggd&quot; (laddboxen = en); 03 skriver &quot;Byggd&quot;.</li><li>1854-680: &quot;Låg säkerhet&quot; är ett säkerhetspåstående; faktalagret stöder brandrisk vid vägguttag men skriv &quot;kan&quot; (⚑).</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g03">
+      <div class="media"><img loading="lazy" src="bilder/2190-4584.jpg" alt="Annons 2190-4584"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 03 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>BYGGD FÖR / VARJE NATT.</p><span class="sc">25/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Tal först</span><span class="sc">30/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Byggd för varje natt. 5 års garanti.</p>
+          
+          <p>Behåller sloganen och ger den ett bevis med ett belagt tal. Garantin finns i faktalagret men används inte i någon annan annons, så vinkeln är ny för Andromeda.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt och trovärdigt; ett tal väger mer än ett adjektiv.</dd><dt>Hormozi</dt><dd>Höjer upplevd sannolikhet, den svagaste faktorn i rubriken i dag.</dd><dt>Vaynerchuk</dt><dd>Rakt och utan krusiduller, som en hantverkare säger det.</dd></dl></details>
+          <p class="risk">Risk: Bekräfta att &quot;5 års garanti&quot; gäller hela paketet och inte bara produkten, och skriv i så fall vad den täcker i primärtexten.</p><p class="gr">Granskning: Belagd; primärtexten bör säga vad garantin gäller.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">En anledning</span><span class="sc">27/40</span></div>
+          <p class="rub">Den laddar medan du sover.</p>
+          
+          <p>Översätter egenskapen till det läsaren faktiskt får. Du-tilltalet ger självreferens som nuvarande saknar.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>En fördel i stället för en egenskap.</dd><dt>Hormozi</dt><dd>Drömresultatet utan ansträngning.</dd><dt>Vaynerchuk</dt><dd>Vardagligt och mänskligt, inte broschyr.</dd></dl></details>
+          <p class="risk">Risk: Lovar inte full laddning, vilket är bra; skriv inte &quot;full&quot; i nästa version.</p><p class="gr">Granskning: Varm men bara stämning, ingen siffra.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">23/40</span></div>
+          <p class="rub">Vägguttaget för nödfall. Den här för varje natt.</p>
+          
+          <p>Ger &quot;varje natt&quot; en motpart, så att sloganen får mening utan att läsaren behöver tänka. Pilen &quot;10 gånger snabbare än ett vägguttag&quot; bekräftar.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Sant och specifikt, men nära gränsen för längd.</dd><dt>Hormozi</dt><dd>Gör alternativet sämre utan svartmålning.</dd><dt>Vaynerchuk</dt><dd>Fungerar, men 02 gör samma sak bättre med en hel bild.</dd></dl></details>
+          <p class="risk">Risk: Nära vinkeln i 02 och 08; risk för dubblett.</p><p class="gr">Granskning: Nära 02 och 08, dubblettrisk.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Garantin är belagd (faktalagret: 5 års garanti) och ingen annan annons i batchen bär den, så den ger en egen vinkel. Två korta meningar ryms på två rader.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>&quot;Byggd&quot; handlar om produkten och inte om läsaren. Det finns ingen bild av vad läsaren får, så minnet har inget att fästa vid.</dd><dt>Copywriting</dt><dd>En egenskap som läsaren själv måste översätta till en fördel, vilket Ogilvy varnar för. Rytmen är fin och tonen är Ampys.</dd><dt>Försäljning</dt><dd>Inget i rubriken höjer sannolikheten att det fungerar, och inget sänker ansträngningen. Pilarna gör jobbet, rubriken bara inramar.</dd><dt>Marknadsföring</dt><dd>Det är batchens slogankandidat, men en slogan behöver ett bevis bredvid sig i en kall annons. Ensam blir den stämning.</dd><dt>Best practice</dt><dd>Studiofoto plus stor rubrik är rätt format, och då väger copyn tyngre enligt forumrösten. Här säger copyn minst av alla element på bilden.</dd><dt>E-handel</dt><dd>LeafFilters &quot;Clog-free gutters, guaranteed&quot; visar hur en egenskap blir ett löfte när en garanti läggs bredvid. Ampy har en belagd garanti som ingen annons använder.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Pilarna är bra. &quot;10 meter kabel ingår i priset&quot; bör heta &quot;10 m installationskabel ingår&quot; som på övriga bilder, så att stavningen är enhetlig.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>&quot;10 meter kabel&quot; här mot &quot;10 m installationskabel&quot; på övriga bilder: enhetlig stavning.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g04">
+      <div class="media"><img loading="lazy" src="bilder/1859-400.jpg" alt="Annons 1859-400"><img loading="lazy" src="bilder/1879-605.jpg" alt="Annons 1879-605"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 04 · Laddbox · 2 bilder</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>KÖPA LADDBOX? / HÄR ÄR BLACK FRIDAY MATTEN.</p><span class="sc">/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Avbrott / humor</span><span class="sc">33/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Ingen rea. Avdraget halverar redan priset.</p>
+          
+          <p>Mitt i rean säger Ampy att ingen rea behövs, och kvittot bevisar varför. Det är candourgrinden som säljargument i stället för hinder.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Sann, specifik och oväntad; ingen ordvits.</dd><dt>Hormozi</dt><dd>Erbjudandet är redan bra, så rubriken kan säga det rakt.</dd><dt>Vaynerchuk</dt><dd>Ett avbrott som ger värde, inte ett till reabrus.</dd></dl></details>
+          <p class="risk">Risk: &quot;Halverar&quot; ska läsas som avdraget och inte som Ampys rabatt; kvittoraden &quot;50 % grön teknik-avdrag&quot; gör det tydligt.</p><p class="gr">Granskning: Sann och distinkt; håller även efter 30 november.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Kvitto / dokumentation</span><span class="sc">27/40</span></div>
+          <p class="rub">Köpa laddbox? Här är matten.</p>
+          
+          <p>Minsta möjliga ändring: samma idé utan det falska eventet. Kvittot under är &quot;matten&quot; och gör rubriken sann.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Klar och ärlig, men frågan är bred.</dd><dt>Hormozi</dt><dd>Bred ja-fråga, räddas av att bilden smalnar av den.</dd><dt>Vaynerchuk</dt><dd>Dokumenterar i stället för att hitta på.</dd></dl></details>
+          <p class="risk">Risk: &quot;Matten&quot; är vardagligt; testa mot &quot;räkningen&quot; om tonen känns för slängig.</p><p class="gr">Granskning: &quot;Här är matten&quot; låter översatt (&quot;here&#x27;s the math&quot;).</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Tal först</span><span class="sc">26/40</span></div>
+          <p class="rub">Halva priset. Direkt på fakturan.</p>
+          
+          <p>Säger både värdet och mekaniken, och tar bort oron för att behöva ansöka själv. Faktalagret tillåter &quot;50 % rabatt på ditt köp&quot;.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fördel och nyhet i fyra ord.</dd><dt>Hormozi</dt><dd>Sänker ansträngningen: inget att fylla i, inget att vänta på.</dd><dt>Vaynerchuk</dt><dd>Rak högerkrok; bra bara om andra annonser har gett värde.</dd></dl></details>
+          <p class="risk">Risk: &quot;Halva priset&quot; kan uppfattas som en rea; kvittot visar att det är avdraget.</p><p class="gr">Granskning: &quot;Halva priset&quot; läses som rea, tvärtemot poängen.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Den enda rubriken som vänder Black Friday-bruset till en ärlig fördel, och den är sann: avdraget är 50 % av 8 980. Kvittot under bevisar påståendet direkt.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Kvittot är ett starkt ankare (8 980 → 4 490), och &quot;matten&quot; lovar öppenhet. Men &quot;Black Friday&quot; sätter en reaförväntan som erbjudandet inte motsvarar, och den som upptäcker det förlorar förtroendet.</dd><dt>Copywriting</dt><dd>&quot;Black Friday matten&quot; är särskrivet och halvt på engelska. Strukturen fråga och svar är bra, och utan Black Friday-ordet bär den sig själv.</dd><dt>Försäljning</dt><dd>Hormozi: rubriken kan inte rädda ett erbjudande som inte finns. Priset är detsamma som i oktober, så ett rea-event är falskt.</dd><dt>Marknadsföring</dt><dd>I Black Friday-veckan skriker alla rea. Det som sticker ut är den som säger sanningen, inte den som skriker högst.</dd><dt>Best practice</dt><dd>Motion visar att reakrokar vinner när reacykeln pågår, men bara med ett riktigt erbjudande. Kvitto plus fråga är i övrigt ett toppformat.</dd><dt>E-handel</dt><dd>Ridge använder Black Friday bara med ett faktiskt prisavdrag. Ampy har inget eget avdrag, bara grön teknik, som gäller hela hösten.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Hela underrubriken &quot;HÄR ÄR BLACK FRIDAY MATTEN.&quot; ska bort; den nya rubriken ersätter båda raderna. Kvittot ska vara kvar som det är.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>⚑ &quot;Black Friday&quot; utan eget erbjudande: kriterium 1 = 0, stopp för båda noderna.</li><li>&quot;BLACK FRIDAY MATTEN&quot; är särskrivet och på engelska.</li><li>1859-400, 1879-605: &quot;BLACK FRIDAY MATTEN&quot; ska bort helt (fejkat event, särskrivning, engelska).</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g05">
+      <div class="media"><img loading="lazy" src="bilder/1859-415.jpg" alt="Annons 1859-415"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 05 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>BEHÖVER JAG / EN LADDBOX?</p><span class="sc">34/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Beslutshjälp / ärlig nej-sägare</span><span class="sc">34/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Behöver jag en laddbox? Ibland är svaret nej.</p>
+          
+          <p>Behåller läsarens egen fråga och lägger till det oväntade: en säljare som säger nej. Det gör att även en kall läsare förstår varför schemat är värt att läsa.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ärlighet är den mest trovärdiga fördelen.</dd><dt>Hormozi</dt><dd>Höjer upplevd sannolikhet genom att säljaren tar risken att avråda.</dd><dt>Vaynerchuk</dt><dd>Värde först, köp sen.</dd></dl></details>
+          <p class="risk">Risk: Åtta ord på tre rader i den här typsnittsstorleken; minska typsnittet ett steg.</p><p class="gr">Granskning: Sann, varm, unik; kolla radbrytningen på 1080 px.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Callout / etikett</span><span class="sc">26/40</span></div>
+          <p class="rub">Ny elbil på väg? Börja här.</p>
+          
+          <p>Fångar köpsituationen när elbilen är beställd, då laddboxen är aktuell. Schemat blir startpunkten.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen i det ögonblick den köper.</dd><dt>Hormozi</dt><dd>Smal etikett, sedan en tydlig väg.</dd><dt>Vaynerchuk</dt><dd>Rätt kontext, rätt tid.</dd></dl></details>
+          <p class="risk">Risk: Nära köpsituationen i 11; kör inte båda i samma uppsättning.</p><p class="gr">Granskning: Nära köpsituationen i 11.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Tal först</span><span class="sc">23/40</span></div>
+          <p class="rub">Två frågor. Sen vet du.</p>
+          
+          <p>Ett litet konkret löfte om ansträngning, och schemat visar att det är sant. Kort nog för en sekunds läsning.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt löfte, men saknar produktnamn.</dd><dt>Hormozi</dt><dd>Minimal ansträngning, tydligt slut.</dd><dt>Vaynerchuk</dt><dd>Native och utan krav.</dd></dl></details>
+          <p class="risk">Risk: Kall läsning kräver bilden: &quot;vet vad?&quot; utan schemat.</p><p class="gr">Granskning: Kall läsning kräver bilden.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Behåller frågan som schemat svarar på och lägger nejet som krok; ärlig nej-sägare är batchens starkaste förtroendevinkel. Kräver ett steg mindre typsnitt för att inte bli tre rader.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Jag-formen låter läsaren tänka frågan själv, vilket ger självreferens utan att det står &quot;du&quot;. Att en säljare kan svara nej skapar förtroende.</dd><dt>Copywriting</dt><dd>Det är läsarens egen sökfråga, ordagrant. Rubriken lovar inte att svaret är ja, och det är just därför den är trovärdig.</dd><dt>Försäljning</dt><dd>Flödesschemat sorterar bort fel köpare och skickar rätt köpare till priset. Det är beslutshjälp som säljer.</dd><dt>Marknadsföring</dt><dd>Ett rent jab i Gary Vees mening, och batchen behöver sådana. Den skiljer sig tydligt från alla prisrop.</dd><dt>Best practice</dt><dd>Handritad form är native och avbryter inte. Rubriken är kort och läses på mobil.</dd><dt>E-handel</dt><dd>Motsvarar LeafFilters självsortering (&quot;Choose your home size&quot;). Köparen sorterar in sig själv.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Schemat ska vara kvar. &quot;Då är en laddbox rätt&quot; saknar punkt medan de andra rutorna har punkt; lägg till för enhetlighet.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>&quot;Då är en laddbox rätt&quot; saknar punkt, övriga rutor har punkt.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g06">
+      <div class="media"><img loading="lazy" src="bilder/2287-6197.jpg" alt="Annons 2287-6197"><img loading="lazy" src="bilder/2287-6258.jpg" alt="Annons 2287-6258"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 06 · Laddbox · 2 bilder</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>Långt kvitto. / Kort summa.</p><span class="sc">31/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">30/40</span></div>
+          <p class="rub">Långt kvitto. Kort summa.</p>
+          
+          <p>Behåll. Ingen av de nya slår den, och den gör kvittot till en poäng i stället för en lista.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Parallell kontrast utan ordvits, och den förstås direkt.</dd><dt>Hormozi</dt><dd>Visar mycket värde mot litet pris.</dd><dt>Vaynerchuk</dt><dd>Ser ut som något en människa säger.</dd></dl></details>
+          <p class="risk">Risk: Bara giltig när kvittot visar 4 490 / 8 980.</p><p class="gr">Granskning: Gäller bara när kvittot visar 4 490 / 8 980; med 4 450 på bilden är det stopp.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Invändning</span><span class="sc">25/40</span></div>
+          <p class="rub">Vad blir det egentligen? Här är kvittot.</p>
+          
+          <p>Tar kundens misstro mot laddboxpriser på allvar och svarar med hela kvittot. Den passar kall publik som tror att priset växer i offerten.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Kundens egen fråga som rubrik.</dd><dt>Hormozi</dt><dd>Tar bort osäkerheten om totalpriset.</dd><dt>Vaynerchuk</dt><dd>Dokumentation, inte påstående.</dd></dl></details>
+          <p class="risk">Risk: Nära &quot;Här är kvittot&quot; i 07; välj en av dem per uppsättning.</p><p class="gr">Granskning: Nära 07, välj en kvittovinkel per uppsättning.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Tal först</span><span class="sc">22/40</span></div>
+          <p class="rub">Sex saker ingår. 4 490 kr totalt.</p>
+          
+          <p>Räknar raderna åt läsaren och knyter dem till summan. Talen är belagda när bilden är rättad.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt och trovärdigt.</dd><dt>Hormozi</dt><dd>Staplar värdet mot priset.</dd><dt>Vaynerchuk</dt><dd>Rakt erbjudande, högerkrok.</dd></dl></details>
+          <p class="risk">Risk: Dubblerar summan på kvittot; &quot;totalt&quot; måste betyda efter avdrag, vilket kvittot visar.</p><p class="gr">Granskning: Dubblerar summan på kvittot.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Förslag 0 är identiskt med nuvarande, och det är rätt: batchens bästa kontrast. Felet sitter i bilden, inte rubriken.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Kontrasten mellan många rader och en låg summa är ett sant ankare som läses på en sekund. Men bilden visar fel tal, och då vänds ärligheten till sin motsats.</dd><dt>Copywriting</dt><dd>Rubriken är i klass med Linas &quot;Färre kalorier. Mer av det goda.&quot; Den kräver dock att läsaren ser att det är en laddbox, och det gör produkten till höger.</dd><dt>Försäljning</dt><dd>Kvittot visar allt som ingår och priset efter avdrag, vilket är rätt för en BoFu-annons. Felaktiga belopp gör den osäljbar.</dd><dt>Marknadsföring</dt><dd>06 och 07 är båda kvitton; 06 äger kontrasten och 07 dokumentationen. Det håller dem isär för Andromeda.</dd><dt>Best practice</dt><dd>Kvittoformatet hör till de tre format som bär flest vinnare. Rubriken är kort och läses på mobil.</dd><dt>E-handel</dt><dd>I nivå med Ridges bocklista och mer genomskinlig än de flesta. Priset ligger i kvittot och inte i rubriken, som hos de bästa.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Ingen underrubrik behövs. Kvittot måste rättas: 8 980 / −4 490 / 4 490 i båda noderna. I 2287-6258 ska &quot;Personskyddsautomat&quot; bli &quot;Säkring + jordfelsbrytare&quot; och raden &quot;Tillverkad i Norge – Ingår&quot; tas bort.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>BLOCKER: 4 450 kr / 8 900 kr / −4 450 i båda noderna avviker från faktalagret (4 490 / 8 980).</li><li>2287-6258: &quot;Personskyddsautomat&quot; är inte faktalagrets ord (säkring och jordfelsbrytare).</li><li>2287-6258: &quot;Tillverkad i Norge – Ingår&quot; är ingen sak som ingår och saknar belägg i faktalagret.</li><li>&quot;Grön Teknik 50 %&quot; med versaler; &quot;Att betala&quot; mot &quot;Ditt pris&quot; i 6197 och 07.</li><li>2287-6197, 2287-6258: 4 450 / 8 900 måste bli 4 490 / 8 980 innan annonsen får gå (4 450 är Tesla Wall Connectors guidepris i faktalagret, troligen källan till felet).</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g07">
+      <div class="media"><img loading="lazy" src="bilder/1968-534.jpg" alt="Annons 1968-534"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 07 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Laddboxen sitter. / Här är kvittot.</p><span class="sc">27/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Tal först</span><span class="sc">32/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Så ser 4 490 kr ut på väggen.</p>
+          
+          <p>Gör priset till något man ser: en tänd laddbox på en riktig fasad. Rubriken, kvittot och väggen säger tillsammans något som ingen säger ensam.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt tal och en konkret bild.</dd><dt>Hormozi</dt><dd>Drömresultatet med priset bredvid.</dd><dt>Vaynerchuk</dt><dd>Visar det verkliga jobbet.</dd></dl></details>
+          <p class="risk">Risk: Priset står även i kvittot; det är avsiktligt, rubriken knyter priset till väggen.</p><p class="gr">Granskning: Konkret och kall-läsbar.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Berättelsefragment</span><span class="sc">25/40</span></div>
+          <p class="rub">Elektrikern har gått. Kvittot sitter kvar.</p>
+          
+          <p>En scen i kvällsljus som förklarar varför kvittot är tejpat på väggen. Den antyder att jobbet är klart utan att lova en tid.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik scen, men utan löfte.</dd><dt>Hormozi</dt><dd>Visar att ansträngningen är noll för kunden.</dd><dt>Vaynerchuk</dt><dd>Native, som ett inlägg från någon som just fått det gjort.</dd></dl></details>
+          <p class="risk">Risk: Kräver bilden för att förstås.</p><p class="gr">Granskning: Kräver bilden, ingen fördel.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Invändning</span><span class="sc">25/40</span></div>
+          <p class="rub">Vad kostar en laddbox, på riktigt?</p>
+          
+          <p>Fångar misstron mot laddboxpriser, och kvittot svarar med varje rad. Passar kall publik.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Kundens fråga, beviset inom synhåll.</dd><dt>Hormozi</dt><dd>Tar bort osäkerhet om totalpriset.</dd><dt>Vaynerchuk</dt><dd>Ger svar, inte reklam.</dd></dl></details>
+          <p class="risk">Risk: Nära 06-alternativet &quot;Vad blir det egentligen?&quot;; kör inte båda.</p><p class="gr">Granskning: Nära 06-alternativet, bred fråga.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Knyter kvittot till den färdiga laddboxen i en mening; dokumentation som rubrik. Priset står två gånger, men här är det poängen och inte en upprepning.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Dokumentation känns ärlig, men &quot;laddboxen sitter&quot; säger inte vems eller varför det är intressant. En kall läsare förstår inte direkt vad hen får.</dd><dt>Copywriting</dt><dd>Bra rytm och Gary Vees &quot;document, don&#x27;t create&quot;. Men det viktigaste, priset för det man ser, står bara i kvittot.</dd><dt>Försäljning</dt><dd>Kvittot med rätt tal är ett starkt bevis. Rubriken binder inte ihop det med resultatet på väggen.</dd><dt>Marknadsföring</dt><dd>Kvällsbilden med tänd laddbox är batchens snyggaste installationsfoto. Rubriken borde peka på väggen, inte bara på pappret.</dd><dt>Best practice</dt><dd>Två textblock och en produkt är rätt mängd. Rubriken är kort.</dd><dt>E-handel</dt><dd>Motsvarar Hemfrids &quot;uppdraget i rubriken, priset i etiketten&quot;, men här saknas uppdraget.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Ingen underrubrik behövs; kvittot bär detaljerna. Kvittot är korrekt (8 980 / −4 490 / 4 490).</p></details>
+        
+      </div></article><article class="card" data-prod="Laddbox" id="g08">
+      <div class="media"><img loading="lazy" src="bilder/1968-638.jpg" alt="Annons 1968-638"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 08 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Anders har laddat i ett vägguttag i två år. I kväll är den resan slut.</p><span class="sc">22/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Berättelsefragment</span><span class="sc">30/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Anders hänger upp sladden. För gott.</p>
+          
+          <p>Rubriken beskriver exakt det bilden visar, och &quot;för gott&quot; ger avslutet. Laddboxen bredvid förklarar varför.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik scen och sex ord.</dd><dt>Hormozi</dt><dd>Visar resultatet: problemet är borta.</dd><dt>Vaynerchuk</dt><dd>Dokumentation av en verklig stund.</dd></dl></details>
+          <p class="risk">Risk: Anders är en scen, inte en kund; inga citattecken och inget efternamn.</p><p class="gr">Granskning: Scen, inte kundcitat; inget efternamn.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Före/efter</span><span class="sc">23/40</span></div>
+          <p class="rub">Från nödladdning till varje natt.</p>
+          
+          <p>Transformationen i fem ord, med faktalagrets ord. Bilden visar båda sakerna samtidigt.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Sant och utan ordvits.</dd><dt>Hormozi</dt><dd>Före och efter, med efter som drömresultat.</dd><dt>Vaynerchuk</dt><dd>Begriplig på en sekund.</dd></dl></details>
+          <p class="risk">Risk: &quot;Varje natt&quot; är 03:s vinkel; dubbletten sänker poängen.</p><p class="gr">Granskning: &quot;Varje natt&quot; är 03:s vinkel.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Om-så</span><span class="sc">24/40</span></div>
+          <p class="rub">Två år i vägguttaget? Då är det dags.</p>
+          
+          <p>Gör Anders situation till läsarens och ger ett tydligt nästa steg. Kortare än nuvarande med samma igenkänning.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen.</dd><dt>Hormozi</dt><dd>Om-så-callout, smal nog.</dd><dt>Vaynerchuk</dt><dd>Låter som en kompis som säger till.</dd></dl></details>
+          <p class="risk">Risk: &quot;Två år&quot; smalnar av för mycket; ett år eller mer gäller också.</p><p class="gr">Granskning: &quot;Två år&quot; smalnar av i onödan.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Sex ord i stället för sexton, och bilden visar exakt det rubriken säger: han hänger upp sladden. Paragrafen bär vägguttagsargumentet.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Igenkänningen är stark för den som laddar i vägguttaget. Men 16 ord läses inte på en sekund, och &quot;den resan&quot; är en metafor som drar ner flytet.</dd><dt>Copywriting</dt><dd>Scenen är bra men berättad i stället för visad. Bilden visar redan handlingen, och rubriken tar inte vara på det.</dd><dt>Försäljning</dt><dd>Problemet i läsarens vardag är rätt öppning för mellantratten. Lösningen får dock mindre plats än resan dit.</dd><dt>Marknadsföring</dt><dd>Bilden där Anders hänger upp laddsladden på kroken är batchens tydligaste bild av ett avslut. Rubriken säger något annat än bilden.</dd><dt>Best practice</dt><dd>Över 12 ord och tre rader, alltså en dödssynd i 9:16. Halvera längden.</dd><dt>E-handel</dt><dd>Problem-callout i läsarens vardag, ett vanligt DTC-mönster. Här förlorar den på längden.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Paragrafen &quot;Ett vägguttag är byggt för nödladdning, inte för varje natt. Zaptec Go är byggd för det.&quot; kan stå kvar och bär nu vägguttaget, så att rubriken kan bära scenen.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Nuvarande rubrik är 16 ord på tre rader (över tolv ord är en dödssynd i 9:16).</li><li>Anders ska läsas som scen, inte som kundcitat.</li><li>1968-638: nuvarande rubrik 16 ord på tre rader.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g09">
+      <div class="media"><img loading="lazy" src="bilder/1968-643.jpg" alt="Annons 1968-643"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 09 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Joakim laddar bilen på natten när elpriserna är låga.</p><span class="sc">26/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Om-så</span><span class="sc">31/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Har du timpris? Ladda när elen är billigast.</p>
+          
+          <p>Villkoret står i rubriken, så löftet är sant för alla som svarar ja. Det är en smal callout som också är ärlig.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen och lovar en fördel.</dd><dt>Hormozi</dt><dd>Om-så-callout: rätt läsare, tydligt resultat.</dd><dt>Vaynerchuk</dt><dd>Ger värde även till den som inte köper idag.</dd></dl></details>
+          <p class="risk">Risk: Faktalagret säger &quot;tim- eller kvartspris&quot;; &quot;timpris&quot; är vardagsordet, men nämn kvartspris i primärtexten.</p><p class="gr">Granskning: &quot;Timpris&quot; är vardagsordet; nämn kvartspris i primärtexten.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Berättelsefragment</span><span class="sc">25/40</span></div>
+          <p class="rub">Joakim sover. Bilen laddar när elen är billigast.</p>
+          
+          <p>Scenen och fördelen i en mening, med nattbilden som bevis. Kortare och tydligare än nuvarande.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik scen med ett löfte.</dd><dt>Hormozi</dt><dd>Drömresultatet utan ansträngning.</dd><dt>Vaynerchuk</dt><dd>Vardaglig och mänsklig.</dd></dl></details>
+          <p class="risk">Risk: Saknar villkoret; kräver att primärtexten säger tim- eller kvartspris.</p><p class="gr">Granskning: Saknar villkoret tim- eller kvartspris.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Invändning</span><span class="sc">26/40</span></div>
+          <p class="rub">Krångligt med appen? Elektrikern visar dig.</p>
+          
+          <p>Svarar på oron att smart laddning är krångligt, och telefonen i bilden blir beviset. Faktalagret säger att elektrikern hjälper och visar.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Kundens invändning som rubrik.</dd><dt>Hormozi</dt><dd>Sänker ansträngningen.</dd><dt>Vaynerchuk</dt><dd>Native, utan krav.</dd></dl></details>
+          <p class="risk">Risk: Elektrikern hjälper och visar, gör det inte åt kunden; skriv aldrig &quot;ställer in åt dig&quot;.</p><p class="gr">Granskning: Väcker en invändning läsaren kanske inte hade.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Om-så-formen bygger in villkoret och gör löftet sant, vilket nuvarande inte gör. Väljer samtidigt rätt läsare.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Lågt elpris är en stark drivkraft, men rubriken lovar det utan villkor. Den som inte har tim- eller kvartspris känner sig lurad efteråt.</dd><dt>Copywriting</dt><dd>Nio ord på tre rader, och Joakim är en tredje person som läsaren inte har anledning att bry sig om. Underrubriken &quot;är det möjligt&quot; är vag.</dd><dt>Försäljning</dt><dd>Schemaläggning är ett belagt mervärde som ingen annan annons använder. Det är en bra vinkel som säljs svagt.</dd><dt>Marknadsföring</dt><dd>Mannen med telefonen i dörren visar appen utan att säga det. Rubriken pekar inte på det.</dd><dt>Best practice</dt><dd>Tre rader rubrik plus en rad underrubrik plus bricka är mycket text för en 4:5.</dd><dt>E-handel</dt><dd>Linas &quot;När du vill äta lite lättare&quot; visar hur situation, produkt och villkor ryms i en rubrik.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Byt &quot;Med en Zaptec Go för 4 490 kr är det möjligt.&quot; mot &quot;Elektrikern hjälper dig schemalägga laddningen i appen.&quot; Villkoret (tim- eller kvartspris) står då i rubriken.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Nuvarande lovar låga elpriser utan villkoret tim- eller kvartspris (⚑ candour).</li><li>1968-643: nuvarande rubrik lovar låga elpriser utan villkoret tim- eller kvartspris (⚑ candour).</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g10">
+      <div class="media"><img loading="lazy" src="bilder/1968-648.jpg" alt="Annons 1968-648"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 10 · Laddbox · 1 bild</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>06.40 och minus fyra. Lenas bil är laddad.</p><span class="sc">36/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Berättelsefragment</span><span class="sc">34/40</span></div>
+          <p class="rub">06.40 och minus fyra. Lenas bil är laddad.</p>
+          
+          <p>Behåll. Ingen av de nya slår den.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specificitet i scenen gör den trovärdig.</dd><dt>Hormozi</dt><dd>Drömresultatet, konkret.</dd><dt>Vaynerchuk</dt><dd>Ser ut som en vanlig morgon, inte reklam.</dd></dl></details>
+          </li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Invändning</span><span class="sc">24/40</span></div>
+          <p class="rub">Minusgrader? Bilen är laddad ändå.</p>
+          
+          <p>Svarar på oron att kyla gör laddningen opålitlig. Kortare, men tappar scenens specificitet.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fördel, men allmännare.</dd><dt>Hormozi</dt><dd>Tar bort en invändning.</dd><dt>Vaynerchuk</dt><dd>Rakt och kort.</dd></dl></details>
+          <p class="risk">Risk: &quot;Ändå&quot; kan antyda att laddboxen gör något särskilt i kyla; det påstår vi inte.</p><p class="gr">Granskning: &quot;Ändå&quot; antyder en kyleffekt som inte är belagd.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">22/40</span></div>
+          <p class="rub">Frost på bilen. Laddad ändå.</p>
+          
+          <p>Parallell kontrast som bilden bekräftar (frost på häcken och bilen). Fyra ord.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Kort och visuell.</dd><dt>Hormozi</dt><dd>Resultatet i två led.</dd><dt>Vaynerchuk</dt><dd>Native, som en bildtext.</dd></dl></details>
+          <p class="risk">Risk: Saknar &quot;du&quot; och tid; svagare kall läsning.</p><p class="gr">Granskning: Saknar du och tid.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Nuvarande är batchens bästa rubrik och förslag 0 är samma text. Inget av alternativen kommer nära.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Klockslag och temperatur gör scenen verklig, och &quot;laddad&quot; är resultatet läsaren vill ha. Kalla morgnar är en känd oro för elbilsägare.</dd><dt>Copywriting</dt><dd>En av batchens bästa rubriker. Åtta ord, specifik, fördel i sista ordet.</dd><dt>Försäljning</dt><dd>Drömresultatet (laddad bil när man behöver den) står i rubriken, och underrubriken bär beviset. Bra arbetsfördelning.</dd><dt>Marknadsföring</dt><dd>Frostbilden och rubriken säger samma sak på två sätt utan att upprepa varandra. Rätt för vintern.</dd><dt>Best practice</dt><dd>Två rader i 4:5, ovanför UI-zonerna i 9:16.</dd><dt>E-handel</dt><dd>Bara HelloFreshs &quot;jag orkar inte planera&quot;-kväll kommer i närheten i Ad Library-researchen.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Behåll. &quot;Zaptec Go laddar upp till 10 gånger snabbare än ett vägguttag. Installerad av våra egna elektriker.&quot; är rätt bevis bakom scenen.</p></details>
+        
+      </div></article><article class="card" data-prod="Laddbox" id="g11">
+      <div class="media"><img loading="lazy" src="bilder/1968-653.jpg" alt="Annons 1968-653"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 11 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Bilen kommer på fredag. Laddboxen sitter redan på väggen.</p><span class="sc">30/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Ja-fråga</span><span class="sc">28/40</span></div>
+          <p class="rub">Elbilen är beställd. Laddboxen då?</p>
+          
+          <p>Talar direkt till den som har beställt en elbil, och bilden svarar: den sitter redan där. Fem ord.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på köparen i köpögonblicket.</dd><dt>Hormozi</dt><dd>Smal ja-fråga med tydlig nästa handling.</dd><dt>Vaynerchuk</dt><dd>Låter som en kompis som påminner.</dd></dl></details>
+          <p class="gr">Granskning: Bra callout men krockar med bilden där laddboxen redan sitter.</p></li><li class="prop star">
+          <div class="ph"><span class="num">2</span><span class="mek">Berättelsefragment</span><span class="sc">31/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Bilen kommer på fredag. Laddboxen sitter redan.</p>
+          
+          <p>Samma scen, sju ord och två rader. Behåller värmen i nuvarande.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik dag, konkret resultat.</dd><dt>Hormozi</dt><dd>Visar att allt är klart när bilen kommer.</dd><dt>Vaynerchuk</dt><dd>Vardaglig scen.</dd></dl></details>
+          <p class="risk">Risk: Antyder snabb installation utan att lova en ledtid; lova aldrig en ledtid i primärtexten utan belägg.</p><p class="gr">Granskning: Matchar bilden ord för ord; lova ingen ledtid i primärtexten.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Förlustram med äkta deadline</span><span class="sc">24/40</span></div>
+          <p class="rub">Elbil i januari? Beställ laddboxen före 15 december.</p>
+          
+          <p>Kopplar köpsituationen till den riktiga deadlinen för årets avdrag. Den som får bilen efter jul förlorar annars årets avdrag.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Nyhet och målgrupp i samma rad.</dd><dt>Hormozi</dt><dd>Kortar tidsfördröjningen med ett sant skäl.</dd><dt>Vaynerchuk</dt><dd>Högerkrok med god grund.</dd></dl></details>
+          <p class="risk">Risk: Nära deadlinevinkeln i 20–24; &quot;före 15 december&quot; ska betyda beställ senast 15 december.</p><p class="gr">Granskning: &quot;Före 15 december&quot; är fel: deadline är beställ senast 15 december, och vinkeln ägs av 20–24.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Jag byter från skribentens val. Bilden visar redan laddboxen på väggen och paret som väntar, så &quot;Laddboxen då?&quot; ställer en fråga som bilden redan besvarat; den kortade berättelsen stämmer exakt med bilden och går ned till sju ord.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Köpsituationen (ny elbil på väg) är den starkaste tidpunkten för en laddbox. Förväntan i paret som tittar ut gör scenen varm.</dd><dt>Copywriting</dt><dd>Bra idé, men tio ord på tre rader. &quot;På väggen&quot; är överflödigt när laddboxen syns.</dd><dt>Försäljning</dt><dd>Rätt köpare i rätt ögonblick. Rubriken talar dock om paret i stället för till läsaren.</dd><dt>Marknadsföring</dt><dd>Det är batchens enda annons om köpsituationen, och det är värdefullt för Andromeda.</dd><dt>Best practice</dt><dd>Över åtta ord och tre rader; korta till två.</dd><dt>E-handel</dt><dd>Hemfrids &quot;Dags att sälja?&quot; visar hur köpsituationen blir en fråga som läsaren sorterar in sig i.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Paragrafen &quot;Säkring, jordfelsbrytare, montering och 10 m installationskabel ingår i priset.&quot; är bra och kan stå kvar.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Nuvarande rubrik är tio ord på tre rader.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g12">
+      <div class="media"><img loading="lazy" src="bilder/1968-658.jpg" alt="Annons 1968-658"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 12 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Grannen frågade vad laddboxen kostade. Sen frågade han en gång till.</p><span class="sc">28/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Berättelsefragment</span><span class="sc">31/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Grannen frågade vad den kostade. Två gånger.</p>
+          
+          <p>Samma skämt med sju ord i stället för tretton. Brickan bredvid ger svaret på varför han frågade igen.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik scen; ingen ordvits, bara en poäng.</dd><dt>Hormozi</dt><dd>Priset blir resultatet som förvånar.</dd><dt>Vaynerchuk</dt><dd>Låter som något man berättar över staketet.</dd></dl></details>
+          <p class="risk">Risk: Grannen är en scen, inte en recension.</p><p class="gr">Granskning: Scen, inte recension.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Tal först</span><span class="sc">23/40</span></div>
+          <p class="rub">”Kostade den bara 4 490?”</p>
+          
+          <p>Ogilvys citattecken lyfter minnet, och talet står i frågan. Mannen som pekar blir den som säger det.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Citat i rubriken minns bättre.</dd><dt>Hormozi</dt><dd>Ett ojämnt tal låter äkta.</dd><dt>Vaynerchuk</dt><dd>Native replik.</dd></dl></details>
+          <p class="risk">Risk: Citattecken kan läsas som en verklig kundrecension; ingen avsändare och inget namn. Dubblerar brickans tal.</p><p class="gr">Granskning: Citattecken läses som påhittad kundrecension; dubblerar brickan.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Invändning</span><span class="sc">23/40</span></div>
+          <p class="rub">Dyrt med laddbox? Fråga grannen.</p>
+          
+          <p>Tar upp prisinvändningen och låter scenen svara. Fem ord.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Kundens invändning som rubrik.</dd><dt>Hormozi</dt><dd>Sänker upplevd risk med social signal.</dd><dt>Vaynerchuk</dt><dd>Lekfull och kort.</dd></dl></details>
+          <p class="risk">Risk: Antyder att grannen har köpt; det är en scen, men gränsen mot påhittad social bevisning är nära.</p><p class="gr">Granskning: Nära påhittad social bevisning.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Samma vinkel som nuvarande på halva antalet ord, och den pekande grannen bär den. Priset bredvid löser nyfikenhetsluckan direkt.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Nyfikenhetsluckan (varför frågade han igen?) besvaras direkt av prisbrickan, vilket är det enda sättet en lucka fungerar i en statisk annons. Grannen är också en lätt social signal utan påhittade siffror.</dd><dt>Copywriting</dt><dd>Bästa skämtet i batchen, men tretton ord på tre rader. Poängen ligger i &quot;en gång till&quot;, och den kan sägas kortare.</dd><dt>Försäljning</dt><dd>Antyder att priset är förvånansvärt lågt utan att säga &quot;billig&quot;. Det säljer priset utan reklamspråk.</dd><dt>Marknadsföring</dt><dd>Avbrottskrok av det slag Motion råder att alltid ha en testplats för. Behåll vinkeln.</dd><dt>Best practice</dt><dd>Över tolv ord är en dödssynd; korta till sju.</dd><dt>E-handel</dt><dd>Påminner om HelloFreshs &quot;Hon har en poäng&quot;: en vardagsperson bär argumentet.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Paragrafen kan stå kvar. &quot;Monterad av våra egna elektriker&quot; bör bli &quot;Installerad av våra egna elektriker&quot; som i övriga annonser.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Nuvarande rubrik är 13 ord på tre rader.</li><li>&quot;Monterad&quot; här mot &quot;Installerad&quot; i övriga annonser.</li><li>1968-658: &quot;Monterad&quot; ska vara &quot;Installerad&quot; som i övriga annonser.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g13">
+      <div class="media"><img loading="lazy" src="bilder/1968-663.jpg" alt="Annons 1968-663"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 13 · Laddbox · 1 bild</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>Nya huset hade allt. Utom en laddbox.</p><span class="sc">31/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Avbrott / humor</span><span class="sc">29/40</span></div>
+          <p class="rub">Kartongerna kan vänta. Bilen ska laddas i natt.</p>
+          
+          <p>Bilden visar exakt kartongerna, så rubriken och fotot blir en enda scen. Den gör laddboxen till det som inte kan vänta, vilket är sant för den som kör elbil varje dag.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik scen som går att se framför sig, men fördelen är fortfarande antydd.</dd><dt>Hormozi</dt><dd>Drömresultatet (laddad bil i natt) står i rubriken i stället för produkten.</dd><dt>Vaynerchuk</dt><dd>Låter som något en människa säger i ett garage, inte som en broschyr.</dd></dl></details>
+          <p class="risk">Risk: Nära nuvarandes nivå; vinsten är samspelet med bilden, inte en ny nyhet.</p><p class="gr">Granskning: Bra samspel; marginell vinst över nuvarande.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Ja-fråga</span><span class="sc">24/40</span></div>
+          <p class="rub">Nytt hus. Laddar du fortfarande i vägguttaget?</p>
+          
+          <p>Bara den som flyttat och laddar i ett vägguttag svarar ja, och just hen är köparen. Bilden svarar med laddboxen.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen och problemet i samma mening.</dd><dt>Hormozi</dt><dd>Smal ja-fråga enligt callout-trappan, bättre än en bred etikett.</dd><dt>Vaynerchuk</dt><dd>Ger igenkänning utan att kräva något.</dd></dl></details>
+          <p class="risk">Risk: &#x27;Fortfarande&#x27; kan läsas som en pik; testa mot nuvarande.</p><p class="gr">Granskning: Pik med &quot;fortfarande&quot;, nära 02.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Callout / etikett</span><span class="sc">24/40</span></div>
+          <p class="rub">Nyinflyttad med elbil? Laddboxen är första jobbet.</p>
+          
+          <p>Etikett plus löfte: säger vem den är till och vad som ska göras. Hängetiketten &#x27;vår mest sålda&#x27; stänger.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Tydlig målgrupp, men inget specifikt tal eller föremål.</dd><dt>Hormozi</dt><dd>Etiketten filtrerar men lovar inget resultat.</dd><dt>Vaynerchuk</dt><dd>Native ton, men lite instruerande.</dd></dl></details>
+          <p class="gr">Granskning: Callout utan fördel.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Behåll dagens rubrik: inget förslag slår den (bästa förslaget 29/40 mot dagens 31/40). Förslagen finns kvar som testvarianter. Granskarens resonemang: Vänder kartongerna i bilden till det som kan vänta; nuvarande är nästan lika bra, så det är ett utmanartest. Valet frigör också &quot;saknas&quot;-vinkeln till grupp 15.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Rubriken träffar en riktig köpsituation, flytten, när man ändå ser över huset. Den skapar en liten lucka som bilden stänger direkt med laddboxen på väggen.</dd><dt>Copywriting</dt><dd>Två korta led med en vändning, bra rytm och sju ord. Fördelen sägs aldrig, den antyds bara genom att något saknades.</dd><dt>Försäljning</dt><dd>Säljer in behovet men inte varför just nu eller just Ampy. Det jobbet lämnas helt åt hängetiketten.</dd><dt>Marknadsföring</dt><dd>Smal och värmande målgrupp (nyinflyttade med elbil), en distinkt vinkel i batchen. Fungerar som mellantrattsannons, inte som avslut.</dd><dt>Best practice</dt><dd>Kort, ovanför mitten och fri från 9:16-zonerna. Rubrik plus produkt plus prisbricka är toppformatet enligt Motion.</dd><dt>E-handel</dt><dd>Motsvarar DTC:s &#x27;för dig som&#x27;-mönster via situation. Saknar det e-handeln alltid har: ett konkret skäl att agera i dag.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Underrubriken upprepar det bilden redan visar (laddboxen sitter på garageväggen). Byt till &#x27;Säkring, jordfelsbrytare och 10 m kabel ingår. Installerad av våra egna elektriker.&#x27;</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga. &#x27;Vår mest sålda laddbox&#x27; är ägarbekräftat (2026-10-25).</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g14">
+      <div class="media"><img loading="lazy" src="bilder/1968-668.jpg" alt="Annons 1968-668"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 14 · Laddbox · 1 bild</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>Hennes elbil. Hans laddhybrid. Samma laddbox.</p><span class="sc">33/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">27/40</span></div>
+          <p class="rub">Elbil eller laddhybrid? Spelar ingen roll.</p>
+          
+          <p>Ställer frågan köparen faktiskt har och svarar rakt. De två bilarna i bilden visar svaret.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Lovar en fördel (passar båda) med få ord.</dd><dt>Hormozi</dt><dd>Tar bort en osäkerhet, som höjer upplevd sannolikhet.</dd><dt>Vaynerchuk</dt><dd>Rak och vardaglig.</dd></dl></details>
+          <p class="gr">Granskning: Bra, men svagare än nuvarande.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">En anledning</span><span class="sc">23/40</span></div>
+          <p class="rub">Byt bil hur du vill. Laddboxen sitter kvar.</p>
+          
+          <p>Gör &#x27;passar alla elbilar och laddhybrider&#x27; till en fördel: du köper inte om laddboxen när du byter bil.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fördel i stället för egenskap.</dd><dt>Hormozi</dt><dd>Sänker framtida ansträngning, nämnaren i värdeekvationen.</dd><dt>Vaynerchuk</dt><dd>Lugn och ärlig ton.</dd></dl></details>
+          <p class="risk">Risk: Bygger på att framtida bilar har samma kontakt; &#x27;passar alla&#x27; är ägarbekräftat för i dag.</p><p class="gr">Granskning: Lovar något om framtida bilar som inte är belagt.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Ja-fråga</span><span class="sc">23/40</span></div>
+          <p class="rub">Laddhybrid? Laddboxen är för dig också.</p>
+          
+          <p>Många laddhybridägare tror att laddbox bara är för elbilar. Frågan når exakt dem.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på en smal målgrupp.</dd><dt>Hormozi</dt><dd>Smal ja-fråga med tydligt svar.</dd><dt>Vaynerchuk</dt><dd>Ger värde: rättar en missuppfattning.</dd></dl></details>
+          <p class="risk">Risk: Smalare publik än nuvarande.</p><p class="gr">Granskning: Smalare och svagare.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Skribenten valde index 0 men rådde själv att behålla nuvarande, och det har den rätt i. Bilden med en bil på var sida är byggd för nuvarande rubrik.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Identitetsspegel: läsaren känner igen hushållet med två olika bilar. Rytmen i tre led gör den lätt att läsa och minnas.</dd><dt>Copywriting</dt><dd>Ett exempel på parallell kontrast i klass med de bästa i Ad Library. Varje ord bär, inget är utfyllnad.</dd><dt>Försäljning</dt><dd>Hanterar invändningen &#x27;passar den min bil?&#x27; utan att uttala den. Priset sitter i cirkeln, som det ska.</dd><dt>Marknadsföring</dt><dd>Distinkt vinkel i batchen (kompatibilitet och hushåll). Fungerar både kallt och varmt.</dd><dt>Best practice</dt><dd>Sex ord, tre korta rader, säker zon. Bilden med en bil på var sida är byggd för rubriken.</dd><dt>E-handel</dt><dd>Liknar &#x27;passar alla&#x27;-mönstret i e-handel men levererat som berättelse. Det enda som saknas är ett skäl att agera nu, och det är okej för den här rollen.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Paragrafen är bra och sann. Behåll den, eventuellt korta till &#x27;Passar alla elbilar och laddhybrider. Egen säkring och jordfelsbrytare ingår.&#x27;</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga.</li><li>Mitt råd: behåll nuvarande rubrik.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g15">
+      <div class="media"><img loading="lazy" src="bilder/1991-1024.jpg" alt="Annons 1991-1024"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 15 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Zaptec Go / Installerad av våra egna elektriker.</p><span class="sc">16/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">27/40</span></div>
+          <p class="rub">Inte bara en låda. Elektrikern ingår.</p>
+          
+          <p>Ställer Ampy mot att köpa en laddbox på nätet utan att nämna någon. Det viktigaste i erbjudandet, installationen, blir rubriken.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fördel och märket i bild samtidigt.</dd><dt>Hormozi</dt><dd>Sänker ansträngningen: inget eget elektrikerletande.</dd><dt>Vaynerchuk</dt><dd>Rakt, kort, native.</dd></dl></details>
+          <p class="risk">Risk: Ordleken laddbox/låda får inte bli dunkel; testa kallt.</p><p class="gr">Granskning: Bra idé men dubblett med 19 och 01.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Kvitto / dokumentation</span><span class="sc">22/40</span></div>
+          <p class="rub">Monterad. Säkrad. Driftsatt.</p>
+          
+          <p>Tre fakta ur ingår-listan i tre ord. På en ren produktbild blir det som en stämpel.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt och trovärdigt.</dd><dt>Hormozi</dt><dd>Visar att jobbet är klart, inte bara att lådan levereras.</dd><dt>Vaynerchuk</dt><dd>Dokumentera, inte skapa.</dd></dl></details>
+          <p class="risk">Risk: Säger inte vem den är till; kräver prisbrickan för sammanhang.</p><p class="gr">Granskning: Säger inte vem den är till; &quot;Säkrad&quot; är tvetydigt.</p></li><li class="prop star">
+          <div class="ph"><span class="num">3</span><span class="mek">Callout / etikett</span><span class="sc">28/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Elbil på uppfarten? Då saknas bara den här.</p>
+          
+          <p>Etikett plus lösning, och bilden visar &#x27;den här&#x27;.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen.</dd><dt>Hormozi</dt><dd>Etikett plus resultat, en stapling.</dd><dt>Vaynerchuk</dt><dd>Vardagligt.</dd></dl></details>
+          <p class="risk">Risk: Nio ord; långt för bildytan.</p><p class="gr">Granskning: Åtta ord, ny vinkel, bilden svarar.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Jag byter från skribentens val. &quot;Elektrikern ingår&quot; krockar med grupp 19 (&quot;Även elektrikern&quot;) och 01 (&quot;Den ingår&quot;), tre ingår-rubriker i samma batch läses som en, och &quot;låda&quot; är en halv ordlek. Callouten ger den rena produktbilden en egen vinkel: den som har elbilen men inte laddboxen.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Ett produktnamn väcker ingen känsla och ingen igenkänning hos den som inte redan letar. Det finns ingen lucka och ingen förlust, bara en etikett.</dd><dt>Copywriting</dt><dd>Rubriken upprepar det bilden redan visar (Zaptec-loggan sitter på boxen), dödssynd 6. Underrubriken bär det enda säljande.</dd><dt>Försäljning</dt><dd>Det verkliga erbjudandet, installationen ingår, ligger i en underrubrik som få läser.</dd><dt>Marknadsföring</dt><dd>Fungerar bara för den som redan valt Zaptec Go. För kall publik säger den ingenting.</dd><dt>Best practice</dt><dd>Ren produktbild med text är ett toppformat, men då måste copyn göra jobbet; en praktikerröst säger att copyn väger tyngst just på produktfoton.</dd><dt>E-handel</dt><dd>E-handelns produktsida-rubrik. I flödet behöver den ett löfte eller en fråga, inte en SKU.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Om rubriken blir &#x27;Inte bara en låda. Elektrikern ingår.&#x27; kan underrubriken bli &#x27;Zaptec Go med säkring, jordfelsbrytare och 10 m kabel.&#x27;</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g16">
+      <div class="media"><img loading="lazy" src="bilder/1996-1102.jpg" alt="Annons 1996-1102"><img loading="lazy" src="bilder/1996-1105.jpg" alt="Annons 1996-1105"><img loading="lazy" src="bilder/1996-1107.jpg" alt="Annons 1996-1107"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 16 · Laddbox · 3 bilder</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>VÅR MEST SÅLDA / LADDBOX</p><span class="sc">24/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">En anledning</span><span class="sc">24/40</span></div>
+          <p class="rub">Den här väljer flest. Här är varför.</p>
+          
+          <p>Behåller det äkta sociala beviset och låter bocklistan bredvid bli svaret. Rubrik och bild ger tillsammans en mening.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Lovar ett skäl, och bilden levererar det.</dd><dt>Hormozi</dt><dd>Socialt bevis höjer upplevd sannolikhet.</dd><dt>Vaynerchuk</dt><dd>Kort och ärlig.</dd></dl></details>
+          <p class="risk">Risk: &#x27;Flest&#x27; måste läsas som &#x27;flest av våra kunder&#x27;, vilket är belagt.</p><p class="gr">Granskning: Anglicism och tvetydigt &quot;flest&quot;.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Invändning</span><span class="sc">26/40</span></div>
+          <p class="rub">Vi packar upp den. Och sätter upp den.</p>
+          
+          <p>Passar kartongbilden 1107: svarar på &#x27;vem monterar?&#x27; innan frågan ställs.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Bilden och rubriken berättar tillsammans.</dd><dt>Hormozi</dt><dd>Sänker ansträngningen.</dd><dt>Vaynerchuk</dt><dd>Dokumentär ton.</dd></dl></details>
+          <p class="risk">Risk: Fungerar bara på kartongbilden.</p><p class="gr">Granskning: Bra på kartongbilden 1996-1107 som variant, men ytterligare en ingår-vinkel.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Prisankare</span><span class="sc">23/40</span></div>
+          <p class="rub">8 980 kr. Halva dras direkt på fakturan.</p>
+          
+          <p>Sant ankare (ordinarie före avdrag) och mekaniken sagt rakt. Prisbrickan 4 490 kr stänger.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt tal.</dd><dt>Hormozi</dt><dd>Ett tal som går ner är det starkaste erbjudandet.</dd><dt>Vaynerchuk</dt><dd>Rak.</dd></dl></details>
+          <p class="risk">Risk: Två tal på samma bild; brickan måste vara tydligt slutpriset.</p><p class="gr">Granskning: Tredje &quot;halva&quot;-rubriken i batchen (04, 23).</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>&quot;Den här väljer flest. Här är varför.&quot; är en direktöversättning av &quot;here&#x27;s why&quot; och &quot;flest&quot; kan läsas som hela marknaden, vilket inte är belagt. Nuvarande &quot;Vår mest sålda laddbox&quot; är belagd ordagrant och kall-läsbar; byt hellre ut bakgrunderna än rubriken.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Socialt bevis fungerar, och det här är äkta (ägarbekräftat). Men &#x27;mest sålda&#x27; hos en okänd firma säger lite till en kall läsare.</dd><dt>Copywriting</dt><dd>Påstående utan fråga eller köpsituation. Inga fel, men inget som stoppar tummen.</dd><dt>Försäljning</dt><dd>Bocklistan och priset gör säljjobbet. Rubriken ger bara ett skäl att lita på valet.</dd><dt>Marknadsföring</dt><dd>Samma rubrik på tre bakgrunder blir tre nära dubbletter för Andromeda, som knappt räknas som variation.</dd><dt>Best practice</dt><dd>Kort och läsbar, men versaler i kondenserad stil sänker flytet något.</dd><dt>E-handel</dt><dd>&#x27;Bestseller&#x27; är ett standardgrepp i e-handel och fungerar bäst med ett &#x27;därför&#x27; bredvid.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Bocklistan är bra. &#x27;Laddar när elen är billigast&#x27; bör bli &#x27;Ladda när elen är billigast&#x27; eller få finstilt &#x27;(med tim- eller kvartspris)&#x27;.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Tre bakgrunder med samma rubrik = nära dubbletter (Andromeda).</li><li>&#x27;Laddar när elen är billigast&#x27; kräver tim- eller kvartspris och att kunden schemalägger; mildra eller lägg villkoret i finstilt.</li><li>1996-1102, 1996-1105, 1996-1107: samma rubrik på tre bakgrunder = nära dubbletter; lägg förslag 1 på 1996-1107 om en variant behövs.</li><li>&quot;Laddar när elen är billigast&quot; saknar villkoret tim- eller kvartspris.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g17">
+      <div class="media"><img loading="lazy" src="bilder/1996-1111.jpg" alt="Annons 1996-1111"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 17 · Laddbox · 1 bild</p>
+        <div class="now keep"><span class="lbl">Rubrik i dag · vårt val: behåll den</span><p>Förlåt, bensinmackar. Nu tankar du hemma.</p><span class="sc">29/40</span></div>
+        <ol class="props"><li class="prop">
+          <div class="ph"><span class="num">1</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">29/40</span></div>
+          <p class="rub">Närmaste macken? Din garagevägg.</p>
+          
+          <p>Laddboxen på väggen i bilden blir svaret. Fördelen, ingen omväg och ingen kö, sägs utan ett enda reklamord.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik plats och fördel.</dd><dt>Hormozi</dt><dd>Minskar tid och ansträngning.</dd><dt>Vaynerchuk</dt><dd>Native och kort på en handskriven lapp.</dd></dl></details>
+          <p class="gr">Granskning: Väggen syns inte tydligt som garagevägg; fungerar ändå.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Avbrott / humor</span><span class="sc">27/40</span></div>
+          <p class="rub">Nu tankar du i tofflorna.</p>
+          
+          <p>En levande bild som säger &#x27;hemma, utan att gå ut&#x27;. Värme utan överdrift.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Konkret föremål, ingen ordvits.</dd><dt>Hormozi</dt><dd>Sänker ansträngningen till noll.</dd><dt>Vaynerchuk</dt><dd>Mänsklig och delbar.</dd></dl></details>
+          <p class="risk">Risk: Ordet &#x27;tanka&#x27; om el är en lek; den bärs av bilden.</p><p class="gr">Granskning: Lek med &quot;tanka&quot;, ingen fördel utöver humorn.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Ja-fråga</span><span class="sc">23/40</span></div>
+          <p class="rub">Elbil, men laddar fortfarande på macken?</p>
+          
+          <p>Når elbilsägare som laddar på publika laddstationer och saknar laddbox hemma.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen och problemet.</dd><dt>Hormozi</dt><dd>Smal ja-fråga.</dd><dt>Vaynerchuk</dt><dd>Ger igenkänning.</dd></dl></details>
+          <p class="risk">Risk: Smalare än de andra.</p><p class="gr">Granskning: Kort på målgrupp men klumpig.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Behåll dagens rubrik: inget förslag slår den (bästa förslaget 29/40 mot dagens 29/40). Förslagen finns kvar som testvarianter. Granskarens resonemang: Behåller avbrottet men pekar på laddboxen i bilden och ger en fördel som nuvarande saknar. Fem ord.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Avbrott genom oväntad mottagare: en ursäkt till bensinmackarna. Den bryter mönstret i flödet och känns varm.</dd><dt>Copywriting</dt><dd>Tilltalet blandas: först bensinmackarna, sedan &#x27;du&#x27;. Det glider ändå, men en läsare kan behöva läsa två gånger.</dd><dt>Försäljning</dt><dd>Säger inget om erbjudandet; prisbrickan bär köpet, precis som Ogilvy varnar för.</dd><dt>Marknadsföring</dt><dd>En av få krokar som avbryter i stället för att sälja. Motion råder att alltid ha en sådan testplats.</dd><dt>Best practice</dt><dd>Handstil på en lapp är native och sticker ut. Rubriken är kort och läsbar.</dd><dt>E-handel</dt><dd>Liknar DTC:s självironiska UGC-ton. Fungerar som topp i tratten, inte som avslut.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Ingen paragraf. Signaturen &#x27;Elektrikerna på ampy&#x27; är bra; behåll den.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g18">
+      <div class="media"><img loading="lazy" src="bilder/2190-4555.jpg" alt="Annons 2190-4555"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 18 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>FRÅN VÄGGUTTAG / TILL LADDBOX.</p><span class="sc">25/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Ja-fråga</span><span class="sc">29/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Ser ditt garage ut som före-bilden?</p>
+          <p class="was">Skribentens version: Ser ditt garage ut som vänstra bilden?</p>
+          <p>Den som laddar via sladdvinda känner igen sig direkt, och högra bilden är svaret.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen genom deras eget garage.</dd><dt>Hormozi</dt><dd>Smal ja-fråga.</dd><dt>Vaynerchuk</dt><dd>Igenkänning utan krav.</dd></dl></details>
+          <p class="risk">Risk: Kräver att läsaren ser bilderna; på 4:5 är de stora nog.</p><p class="gr">Granskning: Justerad: knyter an till etiketten FÖRE i bilden.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Före/efter</span><span class="sc">25/40</span></div>
+          <p class="rub">Före: sladdvinda. Efter: egen säkring.</p>
+          
+          <p>Samma format men med en fördel: egen säkring i stället för en sladd som delar säkring med annat.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik.</dd><dt>Hormozi</dt><dd>Visar resultatet.</dd><dt>Vaynerchuk</dt><dd>Dokumenterande.</dd></dl></details>
+          <p class="risk">Risk: &#x27;Egen säkring&#x27; är teknisk för kall publik.</p><p class="gr">Granskning: &quot;Egen säkring&quot; är tekniskt för kall publik.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Kontrast / vi mot dem</span><span class="sc">23/40</span></div>
+          <p class="rub">Högra laddar upp till 10 gånger snabbare.</p>
+          
+          <p>Bilden svarar på vilken som är &#x27;högra&#x27;; talet är belagt.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt tal.</dd><dt>Hormozi</dt><dd>Resultat i siffror.</dd><dt>Vaynerchuk</dt><dd>Rakt.</dd></dl></details>
+          <p class="risk">Risk: &#x27;Upp till&#x27; måste stå kvar.</p><p class="gr">Granskning: Egenskap utan fördel.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Frågan får läsaren att jämföra sitt eget garage med före-bilden. Jag justerar &quot;vänstra bilden&quot;, som ingen säger, till bildens egen etikett.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Före/efter är en stark transformationsram, men rubriken förklarar bilderna i stället för att låta läsaren känna igen sig.</dd><dt>Copywriting</dt><dd>Rubriken upprepar FÖRE/EFTER-etiketterna, dödssynd 6. Fyra ord som inte tillför något.</dd><dt>Försäljning</dt><dd>Bilderna säljer, rubriken är neutral. Värdet (säkerhet, fart) syns inte.</dd><dt>Marknadsföring</dt><dd>Jämförelse är ett av tre format som bär flest vinnare. Formatet är rätt, rubriken använder det inte.</dd><dt>Best practice</dt><dd>Whiteboard och handstil är native. Läsbar, kort, säker zon.</dd><dt>E-handel</dt><dd>E-handelns före/efter vinner när rubriken sätter ord på &#x27;före&#x27;-smärtan.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Ingen paragraf. Om förslag 0 används kan &#x27;FÖRE/EFTER&#x27; stå kvar som etiketter.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g19">
+      <div class="media"><img loading="lazy" src="bilder/2179-6316.jpg" alt="Annons 2179-6316"><img loading="lazy" src="bilder/2179-6353.jpg" alt="Annons 2179-6353"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 19 · Laddbox · 2 bilder</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>KÖPA LADDBOX? / Få allt det här:</p><span class="sc">27/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Offer stack (ingår-räkning)</span><span class="sc">31/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Allt på bilden ingår. Även elektrikern.</p>
+          
+          <p>Leksakselektrikern i bilden får rubriken att le. Den lyfter det mest oväntade som ingår, enligt Hemfrids &#x27;Fönsterputs ingår!&#x27;.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Löfte plus specifikt föremål.</dd><dt>Hormozi</dt><dd>Sänker ansträngningen; allt i ett.</dd><dt>Vaynerchuk</dt><dd>Lätt, delbar ton.</dd></dl></details>
+          </li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Invändning</span><span class="sc">26/40</span></div>
+          <p class="rub">Vad ingår i 4 490 kr? Allt det här.</p>
+          
+          <p>Ställer prisfrågan och bilden svarar.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt tal.</dd><dt>Hormozi</dt><dd>Värdet blir synligt mot priset.</dd><dt>Vaynerchuk</dt><dd>Rakt.</dd></dl></details>
+          <p class="risk">Risk: Priset står två gånger på bilden.</p><p class="gr">Granskning: Priset två gånger, nära 01:s frågeform.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Callout / etikett</span><span class="sc">23/40</span></div>
+          <p class="rub">Jämför du laddboxar? Jämför det här.</p>
+          
+          <p>Talar till den som jämför priser och visar vad som ska jämföras.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen.</dd><dt>Hormozi</dt><dd>Smal etikett.</dd><dt>Vaynerchuk</dt><dd>Ger värde.</dd></dl></details>
+          <p class="risk">Risk: Kan locka till prisjämförelse som Ampy inte vinner på varje rad.</p><p class="gr">Granskning: Bjuder in till prisjämförelse.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Gör leksakselektrikern till poängen och säger det viktigaste: installationen ingår. Starkaste ingår-rubriken i batchen, därför får 15 vika.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Offer stack visar värde genom mängd: varje ikon är en sak läsaren slipper fixa själv.</dd><dt>Copywriting</dt><dd>&#x27;Köpa laddbox?&#x27; är en bred ja-fråga på gränsen till brus, och den räddas av bilden.</dd><dt>Försäljning</dt><dd>Listan är det starkaste säljverktyget i batchen. Rubriken säger kategorin, inte paketets värde.</dd><dt>Marknadsföring</dt><dd>Transparens är Ampys styrka. Rubriken använder den inte.</dd><dt>Best practice</dt><dd>Två textrader plus sex etiketter plus pris är mycket text, men formatet bär det.</dd><dt>E-handel</dt><dd>Mönstret &#x27;få allt det här&#x27; kommer från DTC-bundles, och de vinnande lyfter fram det mest oväntade som ingår.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Ta bort &#x27;Få allt det här:&#x27; om förslag 0 eller 1 används, eftersom rubriken då gör det jobbet.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga. Alla sex ikoner stämmer mot faktalagret.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g20">
+      <div class="media"><img loading="lazy" src="bilder/2103-1118.jpg" alt="Annons 2103-1118"><img loading="lazy" src="bilder/2209-4634.jpg" alt="Annons 2209-4634"><img loading="lazy" src="bilder/2209-4646.jpg" alt="Annons 2209-4646"><img loading="lazy" src="bilder/2285-1891.jpg" alt="Annons 2285-1891"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 20 · Laddbox · 4 bilder</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Låt inte årets grön teknik-avdrag brinna inne.</p><span class="sc">25/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Förlustram med äkta deadline</span><span class="sc">29/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Låt inte 4 490 kr i avdrag brinna inne.</p>
+          <p class="was">Skribentens version: Låt inte 4 490 kr brinna inne.</p>
+          <p>Avdraget är exakt 4 490 kr, så förlusten blir konkret. Det tunga ordet försvinner och datumet står i pillret.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt belopp, ingen ordvits.</dd><dt>Hormozi</dt><dd>Beloppet gör förlusten verklig.</dd><dt>Vaynerchuk</dt><dd>Kort.</dd></dl></details>
+          <p class="risk">Risk: Förutsätter att pillret med 15 december står kvar och att priset är 4 490 (inte 4 450).</p><p class="gr">Granskning: Justerad: &quot;i avdrag&quot; skiljer avdraget från priset. Gäller bara när brickan visar 4 490.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Ja-fråga</span><span class="sc">25/40</span></div>
+          <p class="rub">Har du kvar årets grön teknik-avdrag?</p>
+          
+          <p>Mental bokföring: avdraget är något läsaren redan har.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen.</dd><dt>Hormozi</dt><dd>Smal fråga.</dd><dt>Vaynerchuk</dt><dd>Ger värde.</dd></dl></details>
+          <p class="risk">Risk: Tungt ord kvar.</p><p class="gr">Granskning: Tungt ord kvar.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Nyhet / besked</span><span class="sc">23/40</span></div>
+          <p class="rub">Skatteverket betalar halva. Beställ före 15 december.</p>
+          
+          <p>Mekanismen och deadlinen i två led.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fördel plus datum.</dd><dt>Hormozi</dt><dd>Halverar priset tydligt.</dd><dt>Vaynerchuk</dt><dd>Rakt.</dd></dl></details>
+          <p class="risk">Risk: Avdraget förutsätter att kunden har skatt att dra av mot; villkoret står en gång i finstilt.</p><p class="gr">Granskning: &quot;Före 15 december&quot; är fel (ska vara senast); &quot;Skatteverket betalar&quot; är oprecist eftersom Ampy drar avdraget på fakturan.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Beloppet gör förlusten konkret, men &quot;Låt inte 4 490 kr brinna inne&quot; läses kallt som priset på brickan och inte som avdraget. Jag lägger till &quot;i avdrag&quot; så att det blir entydigt; talet stämmer eftersom avdraget är exakt 4 490 kr.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Förlustram med en verklig deadline (15 december) är legitim och stark. Men det som går förlorat är abstrakt; inget belopp syns.</dd><dt>Copywriting</dt><dd>&#x27;Grön teknik-avdrag&#x27; är ett tungt ord som tar en hel rad. Inventariet visar tre stavningar i batchen.</dd><dt>Försäljning</dt><dd>Säljer brådska men inte summan. Ad Library visar att de bästa sätter beloppet i valuta i rubriken.</dd><dt>Marknadsföring</dt><dd>Fyra bilder med samma rubrik (plus 21–23) blir för Andromeda nästan en annons.</dd><dt>Best practice</dt><dd>Sju ord men tre långa rader. &#x27;Brinna inne&#x27; i färg är bra.</dd><dt>E-handel</dt><dd>Rea-krokar med datum toppar Motions lista, men bara med ett belopp eller pris på samma rad.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Pillret &#x27;Beställ senast 15 december&#x27; är rätt och ska stå på alla fyra. Byt &#x27;Betala senast 31 december&#x27; på 2209-4646.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>4 450 kr på 2209-4634, 2209-4646 och 2285-1891 (faktalagret: 4 490).</li><li>&#x27;Betala senast 31 december&#x27; på 2209-4646 saknar belägg.</li><li>&#x27;BLACK FRIDAY-REA&#x27; på 2285-1891: inget eget erbjudande.</li><li>Stavningen varierar (&#x27;Grön Teknik-avdrag&#x27;, &#x27;grönt-avdrag&#x27;).</li><li>&#x27;Brinna inne&#x27; gäller årets avdrag; nästa års avdrag är inte lovat men inte heller borta.</li><li>2209-4634 saknar deadline-pillret helt; lägg till &quot;Beställ senast 15 december&quot;.</li><li>Fyra bakgrunder med samma rubrik = en annons för Andromeda; dela upp på olika rubriker.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g21">
+      <div class="media"><img loading="lazy" src="bilder/2104-1157.jpg" alt="Annons 2104-1157"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 21 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Låt inte årets grön teknik-avdrag brinna inne.</p><span class="sc">23/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Avbrott / humor</span><span class="sc">28/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Vad ger man en elbil i julklapp?</p>
+          
+          <p>Presentram med en oväntad mottagare. Bilden svarar med paketet och laddboxen.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Konkret och utan ordvits.</dd><dt>Hormozi</dt><dd>Resultatet antyds.</dd><dt>Vaynerchuk</dt><dd>Delbar.</dd></dl></details>
+          <p class="gr">Granskning: Kall läsning kräver bilden, men den ger svaret direkt.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">En anledning</span><span class="sc">24/40</span></div>
+          <p class="rub">Ge elbilen en egen säkring i julklapp.</p>
+          
+          <p>Specifik, säker fördel i julram.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifik.</dd><dt>Hormozi</dt><dd>Säkerhet höjer upplevd sannolikhet.</dd><dt>Vaynerchuk</dt><dd>Lätt.</dd></dl></details>
+          <p class="risk">Risk: Teknisk för kall publik.</p><p class="gr">Granskning: Tekniskt för kall publik.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Förlustram med äkta deadline</span><span class="sc">26/40</span></div>
+          <p class="rub">Den här julklappen har ett sista datum.</p>
+          
+          <p>Pillret svarar: 15 december.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Nyhet.</dd><dt>Hormozi</dt><dd>Brådska med grund.</dd><dt>Vaynerchuk</dt><dd>Kort.</dd></dl></details>
+          <p class="gr">Granskning: Tredje deadlinerubriken i familjen 20–24.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Lätt register som passar julbilden, och paketets &quot;Till: Elbilen&quot; svarar på frågan. Deadline bärs av pillret.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Samma förlustram som grupp 20, men bilden är en julklapp och signalerar glädje och omtanke. Rubrik och bild drar åt olika håll, så ingen av dem får full verkan.</dd><dt>Copywriting</dt><dd>Rubriken använder inte bilden alls; &#x27;Till: Elbilen&#x27; är den bästa idén på ytan och ligger outnyttjad. Det tunga ordet &#x27;grön teknik-avdrag&#x27; tar en hel rad.</dd><dt>Försäljning</dt><dd>Pillret och prisbrickan gör säljjobbet, rubriken är en kopia. Det som skiljer just den här annonsen, presenten, säljer ingenting.</dd><dt>Marknadsföring</dt><dd>Andromeda läser den som samma annons som grupp 20. Julramen är den naturliga vinkeln i december och borde ta rubriken.</dd><dt>Best practice</dt><dd>Läsbar men tre långa rader. Lätt register passar bilden bättre än den allvarliga förlustramen (regel 6).</dd><dt>E-handel</dt><dd>DTC-julannonser vinner med en oväntad mottagare, som Manscaped. Bilden har redan greppet, rubriken behöver bara ta det.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Behåll &#x27;Beställ senast 15 december&#x27;.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>Ingen sanningsflagga på bilden.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g22">
+      <div class="media"><img loading="lazy" src="bilder/2287-1968.jpg" alt="Annons 2287-1968"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 22 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Låt inte årets Grönt Teknik-avdrag brinna inne.</p><span class="sc">18/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Förlustram med äkta deadline</span><span class="sc">29/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Tomten tar beställningar till 15 december.</p>
+          
+          <p>Brevet till tomten och den verkliga deadlinen blir en mening.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt datum.</dd><dt>Hormozi</dt><dd>Brådska med grund.</dd><dt>Vaynerchuk</dt><dd>Lätt och delbar.</dd></dl></details>
+          <p class="risk">Risk: Pillret med 31 december måste bort.</p><p class="gr">Granskning: ⚑ &quot;Till&quot; kan läsas som &quot;före&quot;; låt pillret säga &quot;senast&quot;.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Avbrott / humor</span><span class="sc">23/40</span></div>
+          <p class="rub">Elbilen har skrivit till tomten.</p>
+          
+          <p>Berättelse som får läsaren att läsa brevet.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Konkret.</dd><dt>Hormozi</dt><dd>Inget löfte.</dd><dt>Vaynerchuk</dt><dd>Native.</dd></dl></details>
+          <p class="risk">Risk: Ingen fördel.</p><p class="gr">Granskning: Ingen fördel.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Prisankare</span><span class="sc">23/40</span></div>
+          <p class="rub">Tomten bjuder inte. Avdraget tar halva.</p>
+          
+          <p>Ärlig humor plus mekaniken.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Fördel.</dd><dt>Hormozi</dt><dd>Halverar priset.</dd><dt>Vaynerchuk</dt><dd>Rak.</dd></dl></details>
+          <p class="gr">Granskning: &quot;Avdraget tar halva&quot; är stelt.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Brevet blir en del av rubriken och datumet är äkta. Den antyder inte installation före jul, men primärtexten får inte lova det.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Förlustram ovanpå en bild som säger önskan och värme. Brevet är det läsaren tittar på, men rubriken pratar om något annat.</dd><dt>Copywriting</dt><dd>&#x27;Grönt Teknik-avdrag&#x27; är felstavat och står med stora bokstäver, vilket sänker flytet. Rubriken är en kopia av grupp 20.</dd><dt>Försäljning</dt><dd>Bilden säljer på två punkter som saknar belägg: 4 450 kr och &#x27;Betala senast 31 december&#x27;. Det är en blockerande sanningsfråga, inte bara en rubrikfråga.</dd><dt>Marknadsföring</dt><dd>Dubblett av grupp 20 för Andromeda. Tomtebrevet är ett eget koncept som förtjänar en egen rubrik.</dd><dt>Best practice</dt><dd>Läsbar men tung, och två datum i samma batch (15 och 31 december) är en dödssynd.</dd><dt>E-handel</dt><dd>Tomtebrevet är ett starkt native-grepp i stil med UGC-annonserna i Ad Library. Rubriken borde låna brevets röst.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Byt &#x27;Betala senast 31 december&#x27; mot &#x27;Beställ senast 15 december&#x27;, eller ta bort pillret om förslag 0 används.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>4 450 kr (faktalagret: 4 490).</li><li>&#x27;Betala senast 31 december&#x27; saknar belägg.</li><li>Ett lösryckt &#x27;B&#x27; under laddboxen.</li><li>Stavfel: &#x27;Grönt Teknik-avdrag&#x27;.</li><li>2287-1968: pillret &quot;Betala senast 31 december&quot; ska bli &quot;Beställ senast 15 december&quot;.</li></ul></div>
+      </div></article><article class="card" data-prod="Laddbox" id="g23">
+      <div class="media"><img loading="lazy" src="bilder/2287-5979.jpg" alt="Annons 2287-5979"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 23 · Laddbox · 1 bild</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Låt inte årets Grönt Teknik-avdrag brinna inne.</p><span class="sc">18/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Prisankare</span><span class="sc">29/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Halva notan ligger i kuvertet.</p>
+          <p class="was">Skribentens version: Halva notan ligger redan i kuvertet.</p>
+          <p>50 % blir pengar i ett kuvert. &#x27;Notan&#x27; täcker både laddbox och installation.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Konkret.</dd><dt>Hormozi</dt><dd>Halverar priset synligt.</dd><dt>Vaynerchuk</dt><dd>Lätt.</dd></dl></details>
+          <p class="gr">Granskning: Justerad för att skilja från 04.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Mental bokföring</span><span class="sc">25/40</span></div>
+          <p class="rub">Det här kuvertet är redan ditt.</p>
+          
+          <p>Självreferens: avdraget är läsarens.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Du-tilltal.</dd><dt>Hormozi</dt><dd>Upplevd ägarskap.</dd><dt>Vaynerchuk</dt><dd>Kort.</dd></dl></details>
+          <p class="risk">Risk: Förutsätter skatt att dra av mot.</p><p class="gr">Granskning: Vagare om vad kuvertet innehåller.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Förlustram med äkta deadline</span><span class="sc">24/40</span></div>
+          <p class="rub">Öppna kuvertet före 15 december.</p>
+          
+          <p>Datum och bild i en mening.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Datum.</dd><dt>Hormozi</dt><dd>Brådska med grund.</dd><dt>Vaynerchuk</dt><dd>Kort.</dd></dl></details>
+          <p class="gr">Granskning: Fjärde deadlinerubriken.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Kuvertet i bilden blir halva notan och mekaniken förstås utan ordet grön teknik-avdrag. Jag stryker &quot;redan&quot; för att inte ligga ordagrant nära 04 (&quot;halverar redan priset&quot;).</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Pengakuvertet är mental bokföring i bildform: avdraget blir pengar man håller i. Rubriken använder inte den kraften.</dd><dt>Copywriting</dt><dd>Felstavat (&#x27;Grönt Teknik-avdrag&#x27;) och tungt. Kuvertet säger redan &#x27;Grön teknik-avdrag&#x27;, så rubriken upprepar bilden.</dd><dt>Försäljning</dt><dd>Bilden har 4 450 kr och &#x27;Betala senast 31 december&#x27;, båda utan belägg. Beloppet i kuvertet är det som borde sälja.</dd><dt>Marknadsföring</dt><dd>Dubblett av grupp 20. Kuvertet är den tydligaste bilden av &#x27;pengar som är dina&#x27;, vilket ingen annan annons i batchen har.</dd><dt>Best practice</dt><dd>Läsbar men tre långa rader och tre textblock utöver rubriken. Rubriken behöver inte förklara avdraget när kuvertet gör det.</dd><dt>E-handel</dt><dd>Linas och AG1 sätter beloppet i kronor i rubriken. Kuvertet gör det möjligt utan att skriva ett tal.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Byt pillret mot &#x27;Beställ senast 15 december&#x27;. &#x27;Tillverkad i Norge&#x27; står inte i briefens faktalista; kontrollera.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>4 450 kr (faktalagret: 4 490).</li><li>&#x27;Betala senast 31 december&#x27; saknar belägg.</li><li>&#x27;Tillverkad i Norge&#x27; finns inte i briefens faktalista.</li><li>Stavfel: &#x27;Grönt Teknik-avdrag&#x27;.</li></ul></div>
+      </div></article><article class="card" data-prod="Elcentral" id="g24">
+      <div class="media"><img loading="lazy" src="bilder/2230-5696.jpg" alt="Annons 2230-5696"><img loading="lazy" src="bilder/2230-5728.jpg" alt="Annons 2230-5728"><img loading="lazy" src="bilder/2230-5757.jpg" alt="Annons 2230-5757"></div>
+      <div class="body">
+        <p class="eyebrow">Grupp 24 · Elcentral · 3 bilder</p>
+        <div class="now"><span class="lbl">Rubrik i dag</span><p>Låt inte årets ROT-avdrag brinna inne.</p><span class="sc">26/40</span></div>
+        <ol class="props"><li class="prop star">
+          <div class="ph"><span class="num">1</span><span class="mek">Tal först</span><span class="sc">28/40</span><span class="pick">Vårt val</span></div>
+          <p class="rub">Elcentralen du skjutit upp: 5 900 kr.</p>
+          
+          <p>Talar till den som vet att centralen borde bytas och ger priset direkt.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt tal.</dd><dt>Hormozi</dt><dd>Belagt pris plus smal målgrupp.</dd><dt>Vaynerchuk</dt><dd>Ärlig.</dd></dl></details>
+          <p class="gr">Granskning: Upprepar brickan 5 900 kr.</p></li><li class="prop">
+          <div class="ph"><span class="num">2</span><span class="mek">Förlustram med äkta deadline</span><span class="sc">25/40</span></div>
+          <p class="rub">Låt inte 2 400 kr i ROT brinna inne.</p>
+          
+          <p>Beloppet gör förlusten konkret.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Specifikt.</dd><dt>Hormozi</dt><dd>Förlust med belopp.</dd><dt>Vaynerchuk</dt><dd>Kort.</dd></dl></details>
+          <p class="risk">Risk: Samma formel som 20.</p><p class="gr">Granskning: Samma formel som 20, dubblettrisk.</p></li><li class="prop">
+          <div class="ph"><span class="num">3</span><span class="mek">Ja-fråga</span><span class="sc">25/40</span></div>
+          <p class="rub">Skruvproppar kvar i huset?</p>
+          
+          <p>Problemmedveten callout.</p>
+          <details><summary>Ogilvy · Hormozi · Vaynerchuk</summary><dl class="lens"><dt>Ogilvy</dt><dd>Ropar på målgruppen.</dd><dt>Hormozi</dt><dd>Smal.</dd><dt>Vaynerchuk</dt><dd>Igenkänning.</dd></dl></details>
+          <p class="risk">Risk: Säger inget om paketpriset.</p><p class="gr">Granskning: Inhemskt och smalt men utan erbjudande; bra testvariant.</p></li></ol>
+        <div class="why"><span class="lbl">Därför vinner vårt val</span><p>Säljer elcentralen på behov och pris i stället för på ytterligare en brinna inne-rubrik, vilket skiljer den från 20–23. Priset upprepar brickan, så ta bort brickans tal eller acceptera att rubriken bär det.</p></div>
+        <details class="diag"><summary>Djupanalys av rubriken i dag, sex perspektiv</summary><dl><dt>Psykologi</dt><dd>Förlustram med verklig deadline, men &#x27;ROT-avdrag&#x27; är abstrakt utan belopp. Elcentralen är ett köp folk skjuter upp, och den känslan används inte.</dd><dt>Copywriting</dt><dd>Samma formel som laddboxannonserna, med &#x27;ROT&#x27; utbytt. Inget ord talar till den som har en gammal central hemma.</dd><dt>Försäljning</dt><dd>Elcentralen säljs på behov (gammal central, säkerhet) och pris, men rubriken säljer bara avdraget. Priset 5 900 kr finns på brickan men inte i det läsaren läser först.</dd><dt>Marknadsföring</dt><dd>Elcentralen har bara ett koncept av 24, och service är högsta kommersiella prioritet. Den förtjänar en egen vinkel, inte laddboxens.</dd><dt>Best practice</dt><dd>På 2230-5728 (9:16) börjar rubriken cirka 13 % från toppen, nära Metas övre UI-zon. Flytta ner den något.</dd><dt>E-handel</dt><dd>För dyra och tråkiga köp vinner rubriker som namnger det uppskjutna beslutet eller ställer prisfrågan (LeafFilter). Svaret ska stå bredvid.</dd></dl>
+          <p class="para"><strong>Underrubrik och paragraf:</strong> Behåll &#x27;Beställ senast 15 december&#x27;. Byt &#x27;BLACK FRIDAY-REA&#x27; mot &#x27;Efter ROT-avdrag&#x27;.</p></details>
+        <div class="flags"><span class="lbl">Flaggor</span><ul><li>&#x27;BLACK FRIDAY-REA&#x27; på 2230-5696 och 2230-5728: inget eget erbjudande.</li><li>&#x27;Tillverkad i 🇸🇪&#x27; på 2230-5757 saknar belägg (Hager är ett tyskt bolag).</li><li>Rubriken på 2230-5728 ligger nära övre UI-zonen i 9:16.</li><li>2230-5728: rubriken ligger nära övre UI-zonen i 9:16.</li></ul></div>
+      </div></article>
+</main><script>
+document.querySelectorAll('.filter button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.querySelectorAll('.card').forEach(c=>c.style.display=(b.dataset.f==='alla'||c.dataset.prod===b.dataset.f)?'':'none');}));
+</script></body></html>
